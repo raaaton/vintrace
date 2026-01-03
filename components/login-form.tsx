@@ -64,7 +64,7 @@ export function LoginForm({
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="example@vintrace.fr"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -85,6 +85,7 @@ export function LoginForm({
                   type="password"
                   required
                   value={password}
+                  placeholder="••••••••"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -96,7 +97,7 @@ export function LoginForm({
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link
-                href="/auth/sign-up"
+                href="/signup"
                 className="underline underline-offset-4"
               >
                 Sign up
