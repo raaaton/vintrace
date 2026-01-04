@@ -5,13 +5,14 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { AuthButton } from "@/components/AuthButton";
 import { AccountButton } from "@/components/AccountButton";
+import type { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "VinTrace",
   description: "Application de gestion de voitures",
 };
