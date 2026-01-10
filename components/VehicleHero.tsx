@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Vehicle } from "@/types";
 import { ArrowUpRight } from "lucide-react";
+import { maskVIN } from "@/lib/utils";
 
 type VehicleHeroProps = {
     vehicle: Vehicle;
@@ -38,7 +39,7 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
                 </div>
 
                 <p className="text-sm font-light tracking-widest uppercase text-stone-400 mb-8">
-                    {vehicle.trim}
+                    {maskVIN(vehicle.trim)}
                 </p>
 
                 <div className="mt-auto pt-8 border-t border-stone-700/75">
