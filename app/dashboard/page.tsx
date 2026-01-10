@@ -55,8 +55,6 @@ export default async function DashboardPage() {
         ));
     }  
 
-    console.log(vehicles[0].image);
-
     return (
         <main className="mt-8 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
             <header className="flex items-center justify-between mb-16 border-b border-foreground/10 pb-8">

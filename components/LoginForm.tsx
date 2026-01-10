@@ -85,7 +85,7 @@ export function LoginForm({
                   type="password"
                   required
                   value={password}
-                  placeholder="••••••••"
+                  placeholder="••••••••••"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
