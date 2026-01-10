@@ -2,20 +2,44 @@ import VehicleCard from "@/components/VehicleCard";
 import VehicleHero from "@/components/VehicleHero";
 import Link from "next/link";
 import type { Vehicle } from "@/types";
+import { createClient } from '@/lib/supabase/server';
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
 
-    const vehicles: Vehicle[] = [
-        {
-            year: 1991,
-            make: "Porsche",
-            model: "911 (964)",
-            trim: "Turbo 3.3",
-            image: "/temp_vehicles/porsche-911-964-turbo-3.3.jpg",
-            kileage: 12000,
-            slug: "porsche-911-964-turbo-3.3"
-        }
-    ];
+    const supabase = await createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    const { data, error } = await supabase
+        .from('vehicles')
+        .select(
+            `
+            id,
+            brand,
+            model,
+            year,
+            vin,
+            mileage,
+            cover_image_url,
+            slug
+            `,
+        )
+        .eq('owner_id', user?.id)
+        .order('created_at', {
+            ascending: false,
+        })
+
+        console.log(data, error);
+
+    const vehicles: Vehicle[] = data?.map((vehicle) => ({
+        year: vehicle.year,
+        make: vehicle.brand,
+        model: vehicle.model,
+        trim: vehicle.vin,
+        image: vehicle.cover_image_url,
+        kileage: vehicle.mileage,
+        slug: vehicle.slug
+    })) || [];
 
     let vehicleEls;
 
@@ -30,6 +54,8 @@ export default function DashboardPage() {
             </Link>
         ));
     }  
+
+    console.log(vehicles[0].image);
 
     return (
         <main className="mt-8 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
