@@ -8,7 +8,7 @@ type VehicleHeroProps = {
 
 export default function VehicleHero({ vehicle }: VehicleHeroProps) {
     return (
-        <div className="bg-background relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group flex flex-col md:flex-row items-stretch max-w-6xl mx-auto overflow-hidden">
+        <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group flex flex-col md:flex-row items-stretch max-w-6xl mx-auto overflow-hidden">
             
             {/* Badge année repositionné pour le format Hero */}
             <span className="text-stone-200 font-light text-[12px] bg-stone-800/90 absolute top-6 left-6 px-3 py-1 border border-stone-700 z-50">

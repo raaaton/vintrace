@@ -45,7 +45,7 @@ export default function RootLayout({
                 </div>
             </nav>
 
-            <main className="flex-1 w-full flex flex-col items-center">
+            <main role="main" className="flex-1 w-full flex flex-col items-center">
               {children}
             </main>
 
