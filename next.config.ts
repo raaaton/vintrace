@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
                 destination: "/auth/login",
             },
             {
-                source: "/signup",
+                source: "/register",
                 destination: "/auth/sign-up",
             },
         ];

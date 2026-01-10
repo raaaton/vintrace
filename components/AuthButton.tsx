@@ -21,14 +21,14 @@ export async function AuthButton() {
                 href="/login"
                 className="hover:text-primary transition-all text-xs tracking-wider uppercase text-stone-400 cursor-pointer"
             >
-                Sign in
+                Connexion
             </Link>
             <Button asChild size="sm" variant={"default"}>
                 <Link
-                    href="/signup"
+                    href="/register"
                     className="uppercase px-4 py-1 hover:bg-primary transition-all text-xs font-semibold cursor-pointer"
                 >
-                    Start
+                    Commencer
                 </Link>
             </Button>
         </div>

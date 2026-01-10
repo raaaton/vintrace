@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
-    CardDescription,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
@@ -16,7 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function SignUpForm({
+export function RegisterForm({
     className,
     ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -28,14 +27,14 @@ export function SignUpForm({
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
-    const handleSignUp = async (e: React.FormEvent) => {
+    const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         const supabase = createClient();
         setIsLoading(true);
         setError(null);
 
         if (password !== repeatPassword) {
-            setError("Passwords do not match");
+            setError("Les mots de passe ne correspondent pas");
             setIsLoading(false);
             return;
         }
@@ -55,7 +54,7 @@ export function SignUpForm({
             router.push("/auth/sign-up-success");
         } catch (error: unknown) {
             setError(
-                error instanceof Error ? error.message : "An error occurred"
+                error instanceof Error ? error.message : "Une erreur est survenue"
             );
         } finally {
             setIsLoading(false);
@@ -66,18 +65,17 @@ export function SignUpForm({
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-2xl">Sign up</CardTitle>
-                    <CardDescription>Create a new account</CardDescription>
+                    <CardTitle className="text-2xl">Inscription</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <form onSubmit={handleSignUp}>
+                    <form onSubmit={handleRegister}>
                         <div className="flex flex-col gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="fullName">Full Name</Label>
+                                <Label htmlFor="fullName">Nom complet</Label>
                                 <Input
                                     id="fullName"
                                     type="text"
-                                    placeholder="John Doe"
+                                    placeholder="Jean Dupont"
                                     required
                                     value={fullName}
                                     onChange={(e) =>
@@ -90,7 +88,7 @@ export function SignUpForm({
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="example@vintrace.fr"
+                                    placeholder="exemple@vintrace.fr"
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -98,7 +96,7 @@ export function SignUpForm({
                             </div>
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password">Mot de passe</Label>
                                 </div>
                                 <Input
                                     id="password"
@@ -114,7 +112,7 @@ export function SignUpForm({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="repeat-password">
-                                        Repeat Password
+                                        Confirmer le mot de passe
                                     </Label>
                                 </div>
                                 <Input
@@ -137,17 +135,17 @@ export function SignUpForm({
                                 disabled={isLoading}
                             >
                                 {isLoading
-                                    ? "Creating an account..."
-                                    : "Sign up"}
+                                    ? "Création du compte..."
+                                    : "Commencer"}
                             </Button>
                         </div>
                         <div className="mt-4 text-center text-sm">
-                            Already have an account?{" "}
+                            Vous avez déjà un compte ?{" "}
                             <Link
                                 href="/login"
                                 className="underline underline-offset-4"
                             >
-                                Login
+                                Connexion
                             </Link>
                         </div>
                     </form>

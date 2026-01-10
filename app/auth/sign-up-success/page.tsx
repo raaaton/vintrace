@@ -1,7 +1,6 @@
 import {
     Card,
     CardContent,
-    CardDescription,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
@@ -14,17 +13,12 @@ export default function Page() {
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-2xl">
-                                Thank you for signing up!
+                                Merci pour votre inscription !
                             </CardTitle>
-                            <CardDescription>
-                                Check your email to confirm
-                            </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">
-                                You&apos;ve successfully signed up. Please check
-                                your email to confirm your account before
-                                signing in.
+                                Votre compte a été créé avec succès. Veuillez consulter vos emails pour confirmer votre compte avant de vous connecter.
                             </p>
                         </CardContent>
                     </Card>
