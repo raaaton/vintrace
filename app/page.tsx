@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Vintrace | Valorisez votre véhicule lors de sa revente",
+};
+
 export default function Home() {
     return (
         <div className="flex-1 flex flex-col gap-10 max-w-5xl p-5 mt-20 text-center">

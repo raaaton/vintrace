@@ -1,6 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Suspense } from "react";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Erreur | VinTrace",
+};
 async function ErrorContent({
     searchParams,
 }: {

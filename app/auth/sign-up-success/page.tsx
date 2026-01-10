@@ -4,7 +4,11 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Inscription Réussie | VinTrace",
+};
 export default function Page() {
     return (
         <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
