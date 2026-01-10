@@ -42,7 +42,11 @@ export async function updateSession(request: NextRequest) {
     if (user && request.nextUrl.pathname === "/") {
         const url = request.nextUrl.clone();
         url.pathname = "/garage";
-        return NextResponse.redirect(url);
+        const redirectResponse = NextResponse.redirect(url);
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+            redirectResponse.cookies.set(cookie);
+        });
+        return redirectResponse;
     }
 
     // 2. Redirection vers /login si l'utilisateur n'est pas connecté et tente d'accéder à une page privée
@@ -55,7 +59,27 @@ export async function updateSession(request: NextRequest) {
     ) {
         const url = request.nextUrl.clone();
         url.pathname = "/login";
-        return NextResponse.redirect(url);
+        const response = NextResponse.redirect(url);
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+            response.cookies.set(cookie.name, cookie.value);
+        });
+        return response;
+    }
+
+    if (
+        request.nextUrl.pathname !== "/" &&
+        user &&
+        request.nextUrl.pathname.startsWith("/login") ||
+        request.nextUrl.pathname.startsWith("/signup") ||
+        request.nextUrl.pathname.startsWith("/auth")
+    ) {
+        const url = request.nextUrl.clone();
+        url.pathname = "/garage";
+        const response = NextResponse.redirect(url);
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+            response.cookies.set(cookie.name, cookie.value);
+        });
+        return response;
     }
 
     // IMPORTANT: You *must* return the supabaseResponse object as it is.

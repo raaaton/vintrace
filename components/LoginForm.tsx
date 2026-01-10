@@ -39,7 +39,10 @@ export function LoginForm({
             });
             if (error) throw error;
             // Update this route to redirect to an authenticated route. The user already has an active session.
-            router.push("/garage");
+            router.refresh();
+            setTimeout(() => { // Small delay to ensure session is set (nav might not detect session immediately)
+                router.push("/garage");
+            }, 100);
         } catch (error: unknown) {
             setError(
                 error instanceof Error ? error.message : "An error occurred"
