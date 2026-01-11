@@ -14,9 +14,12 @@ export const metadata: Metadata = {
     title: "Mon Garage | VinTrace",
 };
 
-const supabase = await createClient();
+export const dynamic = 'force-dynamic';
+
 
 export default async function GaragePage() {
+    const supabase = await createClient();
+
     const { count } = await supabase
         .from("vehicles")
         .select("*", { count: "exact", head: true });
@@ -63,6 +66,8 @@ export default async function GaragePage() {
 }
 
 async function VehicleContent() {
+    const supabase = await createClient();
+    
     const {
         data: { user },
     } = await supabase.auth.getUser();
