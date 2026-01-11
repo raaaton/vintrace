@@ -16,7 +16,7 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
             </span>
 
             {/* Section Image : prend 60% de la largeur sur desktop */}
-            <div className="md:w-[60%] aspect-[16/10] md:aspect-auto overflow-hidden flex justify-center items-center border-b md:border-b-0 md:border-r border-stone-700/75">
+            <div className="md:w-[60%] aspect-[16/10] overflow-hidden flex justify-center items-center border-b md:border-b-0 md:border-r border-stone-700/75">
                 <Image
                     className="w-full h-full object-cover hover:scale-[1.02] transition-all duration-1000 ease-out filter saturate-[0.85] group-hover:saturate-100"
                     src={vehicle.image}
