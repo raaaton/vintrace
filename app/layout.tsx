@@ -40,8 +40,8 @@ export default function RootLayout({
                     defaultTheme="system"
                     enableSystem
                 >
-                    <div className="min-h-screen flex flex-col">
-                        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+                    <div className="h-svh flex flex-col">
+                        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 fixed top-0 z-50">
                             <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm">
                                 <div className="flex gap-5 items-center">
                                     <Link

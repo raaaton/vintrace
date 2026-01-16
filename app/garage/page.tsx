@@ -25,7 +25,7 @@ export default async function GaragePage() {
         .select("*", { count: "exact", head: true });
 
     return (
-        <div className="mt-8 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
+        <div className="mt-24 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
             <header className="flex items-center justify-between mb-16 border-b border-foreground/10 pb-8">
                 <div className="flex flex-col">
                     <h1 className="text-2xl font-light tracking-tight text-stone-50 mb-2">
