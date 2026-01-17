@@ -31,10 +31,10 @@ L'architecture est optimisée pour le Serverless et la sécurité (RLS Supabase)
 
 1. **Cloner le projet** :
 
-   ```bash
-   git clone [https://github.com/raaaton/vin-trace.git](https://github.com/raaaton/vin-trace.git)
-   cd vin-trace
-    ```
+```bash
+git clone https://github.com/raaaton/vin-trace.git
+cd vin-trace
+```
 
 2. **Installer les dépendances** :
 
