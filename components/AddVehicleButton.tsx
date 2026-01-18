@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -23,6 +22,9 @@ import { Label } from "@/components/ui/label";
 import { ComponentProps, useState } from "react";
 import CoverImageUploader from "./CoverImageUploader";
 import { toast } from "sonner";
+import { createClient } from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
+import { getCoverImageLink } from "@/lib/supabase/storage";
 
 export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
@@ -37,12 +39,8 @@ export default function AddVehicleButton() {
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Ajouter un Véhicule</DialogTitle>
-                        <DialogDescription>
-                            Créez le dossier numérique de votre véhicule pour
-                            documenter et protéger son historique.
-                        </DialogDescription>
                     </DialogHeader>
-                    <ProfileForm />
+                    <ProfileForm setOpen={setOpen} />
                 </DialogContent>
             </Dialog>
         );
@@ -59,15 +57,16 @@ export default function AddVehicleButton() {
                 </DrawerHeader>
 
                 <div className="flex-1 overflow-y-auto px-4 py-2">
-                    <ProfileForm id="vehicle-form" />
+                    <ProfileForm setOpen={setOpen} id="vehicle-form" />
                 </div>
             </DrawerContent>
         </Drawer>
     );
 }
 
-function ProfileForm({ className }: ComponentProps<"form">) {
+function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen: (open: boolean) => void }) {
     const isDesktop = useMediaQuery("(min-width: 768px)");
+    const router = useRouter();
 
     const [files, setFiles] = useState<File[]>([]);
     const [isPending, setIsPending] = useState(false);
@@ -85,8 +84,39 @@ function ProfileForm({ className }: ComponentProps<"form">) {
         formData.append("cover_image", files[0]);
 
         try {
-            console.log("Véhicule prêt pour la création");
             console.log(formData);
+
+            const supabase = await createClient();
+
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+
+            const vehicleId = crypto.randomUUID();
+
+            const { error } = await supabase.from("vehicles").insert({
+                id: vehicleId,
+                owner_id: user?.id,
+                make: formData.get("make") as string,
+                model: formData.get("model") as string,
+                year: Number(formData.get("year")),
+                license_plate: formData.get("license_plate") as string,
+                vin: formData.get("vin") as string,
+                kileage: Number(formData.get("kileage")),
+                cover_image_url: await getCoverImageLink(user!, formData.get("cover_image") as File, vehicleId as string, "cover-image"),
+            });
+
+            if (error) throw error;
+
+            toast.success("Véhicule ajouté avec succès !");
+            setOpen(false);
+            router.refresh();
+
+        } catch (error: any) {
+            console.error("Error submitting form: ", error);
+            toast.error(
+                "Erreur lors de l'ajout du véhicule : " + error.message,
+            );
         } finally {
             setIsPending(false);
         }

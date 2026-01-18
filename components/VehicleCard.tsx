@@ -18,7 +18,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             <div className="aspect-[16/10] overflow-hidden flex justify-center items-center">
                 <Image
                     className="aspect-[16/10] object-cover hover:scale-[1.05] transition-all duration-1500 ease-out filter saturate-[0.85] group-hover:saturate-100"
-                    src={vehicle.image}
+                    src={vehicle.image ? vehicle.image : "/images/vehicle-placeholder.webp"}
                     alt={vehicle.make + " " + vehicle.model}
                     width={1920}
                     height={1080}
