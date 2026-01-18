@@ -11,7 +11,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
     return (
         <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group">
             {/* Year Badge */}
-            <span className="text-stone-200 font-light text-[12px] bg-stone-800/90 absolute top-4 right-4 px-3 py-1 border border-stone-700 z-50">
+            <span className="text-stone-200 font-light text-[12px] bg-stone-800/90 absolute top-4 right-4 px-3 py-1 border border-stone-700 z-40">
                 {vehicle.year}
             </span>
             {/* Image */}

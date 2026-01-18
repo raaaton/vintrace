@@ -6,7 +6,7 @@ export default function VehicleHeroSkeleton() {
     return (
         <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group flex flex-col md:flex-row items-stretch max-w-6xl mx-auto overflow-hidden w-fit select-none">
             {/* Year Badge */}
-            <Skeleton className="text-stone-200/0 font-light text-[12px] bg-stone-800/90 absolute top-6 left-6 px-3 py-1 border border-stone-700 z-50 w-fit">
+            <Skeleton className="text-stone-200/0 font-light text-[12px] bg-stone-800/90 absolute top-6 left-6 px-3 py-1 border border-stone-700 z-40 w-fit">
                 ####
             </Skeleton>
 

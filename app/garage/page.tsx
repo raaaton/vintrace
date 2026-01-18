@@ -6,9 +6,9 @@ import Link from "next/link";
 import type { Vehicle } from "@/types";
 import { createClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
-import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import AddVehicleButton from "@/components/AddVehicleButton";
 
 export const metadata: Metadata = {
     title: "Mon Garage | VinTrace",
@@ -25,7 +25,7 @@ export default async function GaragePage() {
         .select("*", { count: "exact", head: true });
 
     return (
-        <div className="mt-24 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
+        <div className="mt-8 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
             <header className="flex items-center justify-between mb-16 border-b border-foreground/10 pb-8">
                 <div className="flex flex-col">
                     <h1 className="text-2xl font-light tracking-tight text-stone-50 mb-2">
@@ -41,7 +41,7 @@ export default async function GaragePage() {
                         <VehicleNumber />
                     </Suspense>
                 </div>
-                <Button variant="outline">Ajouter un Véhicule</Button>
+                <AddVehicleButton />
             </header>
             <Suspense
                 fallback={
@@ -77,11 +77,11 @@ async function VehicleContent() {
         .select(
             `
             id,
-            brand,
+            make,
             model,
             year,
             vin,
-            mileage,
+            kileage,
             cover_image_url,
             slug
             `
@@ -94,11 +94,11 @@ async function VehicleContent() {
     const vehicles: Vehicle[] =
         data?.map((vehicle) => ({
             year: vehicle.year,
-            make: vehicle.brand,
+            make: vehicle.make,
             model: vehicle.model,
             trim: vehicle.vin,
             image: vehicle.cover_image_url,
-            kileage: vehicle.mileage,
+            kileage: vehicle.kileage,
             slug: vehicle.slug,
         })) || [];
 

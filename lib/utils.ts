@@ -11,11 +11,11 @@ export const hasEnvVars =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
 export const maskVIN = (vin: string): string => {
-    if (!vin || vin.length < 8) return vin;
+    if (!vin || vin.length < 11) return vin;
 
-    const visibleCount = 6;
+    const visibleCount = 11;
+    const visibleSection = vin.slice(0, visibleCount);
     const maskedSection = "*".repeat(vin.length - visibleCount);
-    const visibleSection = vin.slice(-visibleCount);
 
-    return maskedSection + visibleSection;
+    return visibleSection + maskedSection;
 };
