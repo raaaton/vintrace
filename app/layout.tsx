@@ -73,7 +73,7 @@ export default function RootLayout({
                         </main>
 
                         <footer className="w-full flex items-center justify-center border-t border-foreground/10 py-8 text-xs">
-                            <p className="text-stone-500">© 2026 VinTrace</p>
+                            <p className="text-stone-400">© 2026 VinTrace</p>
                         </footer>
                     </div>
                 </ThemeProvider>
