@@ -67,9 +67,9 @@ pnpm dev
 
 - [x] Initialisation Next.js 16 + Shadcn.
 - [x] Setup Supabase Auth & Schema.
-- [ ] Garage
+- [x] Garage
   - [x] Dashboard "Garage" (fetch les véhicules).
-  - [ ] Ajout de véhicule : Formulaire de création (Marque, Modèle, Année, VIN) avec validation stricte.
+  - [x] Ajout de véhicule : Formulaire de création (Marque, Modèle, Année, VIN) avec validation stricte.
 - [ ] Timeline d'événements avec Upload Storage.
 - [ ] Génération de l'URL Showroom publique.
 - [ ] Intégration Polar.sh pour le plan "Collectionneur".
