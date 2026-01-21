@@ -18,15 +18,14 @@ import {
 export default function CoverImageUploader({
     isDesktop,
     files,
-    setFilesAction
+    setFilesAction,
 }: {
     isDesktop: boolean;
     files: File[];
     setFilesAction: (files: File[]) => void;
 }) {
-
     const onFileReject = React.useCallback((file: File, message: string) => {
-        toast(message, {
+        toast.error(message, {
             description: `"${file.name.length > 20 ? `${file.name.slice(0, 20)}...` : file.name}" has been rejected`,
         });
     }, []);
@@ -42,29 +41,31 @@ export default function CoverImageUploader({
                 onValueChange={setFilesAction}
                 onFileReject={onFileReject}
             >
-
-                {!files.length && <FileUploadDropzone>
-                    <div className="flex flex-col items-center gap-1 text-center">
-                        <div className="flex items-center justify-center rounded-full border p-2.5">
-                            <Upload className="size-6 text-muted-foreground" />
+                {!files.length && (
+                    <FileUploadDropzone>
+                        <div className="flex flex-col items-center gap-1 text-center">
+                            <div className="flex items-center justify-center rounded-full border p-2.5">
+                                <Upload className="size-6 text-muted-foreground" />
+                            </div>
+                            <p className="font-medium text-sm">
+                                Glissez et déposez une image ici
+                            </p>
+                            <p className="text-muted-foreground text-xs">
+                                Ou cliquez pour parcourir (1 image obligatoire,
+                                jusqu'à 50 Mo)
+                            </p>
                         </div>
-                        <p className="font-medium text-sm">
-                            Glissez et déposez une image ici
-                        </p>
-                        <p className="text-muted-foreground text-xs">
-                            Ou cliquez pour parcourir (1 image obligatoire, jusqu'à 50 Mo)
-                        </p>
-                    </div>
-                    <FileUploadTrigger asChild>
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            className="mt-2 w-fit"
-                        >
-                            Parcourir les fichiers
-                        </Button>
-                    </FileUploadTrigger>
-                </FileUploadDropzone>}
+                        <FileUploadTrigger asChild>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="mt-2 w-fit"
+                            >
+                                Parcourir les fichiers
+                            </Button>
+                        </FileUploadTrigger>
+                    </FileUploadDropzone>
+                )}
                 <FileUploadList>
                     {files.map((file, index) => (
                         <FileUploadItem key={index} value={file}>
@@ -96,11 +97,13 @@ export default function CoverImageUploader({
             onValueChange={setFilesAction}
             onFileReject={onFileReject}
         >
-            <FileUploadTrigger asChild>
-                <Button variant="outline" className="w-full">
-                    Parcourir les fichiers
-                </Button>
-            </FileUploadTrigger>
+            {!files.length && (
+                <FileUploadTrigger asChild>
+                    <Button variant="outline" className="w-full">
+                        Parcourir les fichiers
+                    </Button>
+                </FileUploadTrigger>
+            )}
             <FileUploadList>
                 {files.map((file, index) => (
                     <FileUploadItem key={index} value={file}>
