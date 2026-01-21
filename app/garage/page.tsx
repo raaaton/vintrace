@@ -9,6 +9,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import AddVehicleButton from "@/components/AddVehicleButton";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
     title: "Mon Garage | VinTrace",
@@ -66,6 +67,10 @@ export default async function GaragePage() {
 }
 
 async function VehicleContent() {
+    const headersList = await headers();
+    const userAgent = headersList.get("user-agent") || "";
+    const isMobile = /mobile/i.test(userAgent);
+
     const supabase = await createClient();
     
     const {
@@ -104,7 +109,7 @@ async function VehicleContent() {
 
     let vehicleEls;
 
-    if (vehicles.length > 1) {
+    if (vehicles.length > 1 || isMobile) {
         vehicleEls = vehicles.map((vehicle) => (
             <Link
                 key={vehicle.slug}
@@ -119,12 +124,12 @@ async function VehicleContent() {
     return (
         <section
             className={
-                vehicles.length > 1
+                vehicles.length > 1 || isMobile
                     ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr mb-20"
                     : "flex justify-center"
             }
         >
-            {vehicles.length > 1 ? (
+            {vehicles.length > 1 || isMobile ? (
                 vehicleEls
             ) : vehicles.length === 1 ? (
                 <Link href={`/garage/${vehicles[0].slug}`} className="">
