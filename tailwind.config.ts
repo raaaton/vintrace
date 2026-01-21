@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 
 export default {
     darkMode: "media",
@@ -62,5 +63,13 @@ export default {
             },
         },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [
+        tailwindAnimate,
+        require("tailwindcss-animate"),
+        function ({ addVariant }: any) {
+            addVariant("data-horizontal", '&[data-orientation="horizontal"]');
+            addVariant("data-vertical", '&[data-orientation="vertical"]');
+            addVariant("data-disabled", "&[data-disabled]");
+        },
+    ],
 } satisfies Config;

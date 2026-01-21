@@ -25,6 +25,7 @@ import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { getCoverImageLink } from "@/lib/supabase/storage";
+import { ImageCropper } from "@/components/ImageCropper";
 
 export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
@@ -71,6 +72,37 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
     const [files, setFiles] = useState<File[]>([]);
     const [isPending, setIsPending] = useState(false);
 
+    const [imageToCrop, setImageToCrop] = useState<string | null>(null);
+
+    const handleFileSelect = (newFiles: File[]) => {
+        if (newFiles.length === 0) {
+            setFiles([]);
+            return;
+        }
+
+        const file = newFiles[0];
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (typeof reader.result === 'string') {
+                setImageToCrop(reader.result);
+            }
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handleCropComplete = (blob: Blob) => {
+
+        const croppedFile = new File([blob], "cover_cropped.webp", { 
+            type: "image/webp",
+            lastModified: Date.now() 
+        });
+
+        setFiles([croppedFile]);
+        
+        setImageToCrop(null);
+    };
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -84,8 +116,6 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
         formData.append("cover_image", files[0]);
 
         try {
-            console.log(formData);
-
             const supabase = await createClient();
 
             const {
@@ -234,12 +264,23 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                 <CoverImageUploader
                     isDesktop={isDesktop}
                     files={files}
-                    setFilesAction={setFiles}
+                    setFilesAction={handleFileSelect}
                 />
             </div>
-            <Button type="submit" className="mb-2">
-                Créer la fiche véhicule
+            <Button type="submit" className="mb-2" disabled={isPending}>
+                {isPending ? "Création..." : "Créer la fiche véhicule"}
             </Button>
+
+            {imageToCrop && (
+                <ImageCropper 
+                    image={imageToCrop}
+                    onCropComplete={handleCropComplete}
+                    onCancel={() => {
+                        setImageToCrop(null);
+                        setFiles([]);
+                    }}
+                />
+            )}
         </form>
     );
 }
