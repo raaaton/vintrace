@@ -103,6 +103,7 @@ export function ImageCropper({
                 <DialogHeader>
                     <DialogTitle>Ajuster la photo</DialogTitle>
                 </DialogHeader>
+                {/* Cropper Area */}
                 <div className="relative w-full h-[400px] bg-black rounded-md overflow-hidden mt-4">
                     {image && (
                         <Cropper
@@ -120,6 +121,7 @@ export function ImageCropper({
                         />
                     )}
                 </div>
+                {/* Zoom Slider */}
                 <div className="flex items-center gap-4 py-4">
                     <span className="text-sm text-muted-foreground w-12">
                         Zoom

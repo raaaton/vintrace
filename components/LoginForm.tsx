@@ -74,6 +74,7 @@ export function LoginForm({
                 <CardContent>
                     <form onSubmit={handleLogin}>
                         <FieldGroup>
+                            {/* OAuth Login */}
                             <GoogleAuthButton />
                             <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                                 Ou continuez avec
@@ -116,6 +117,7 @@ export function LoginForm({
                                         }
                                     />
                                 </Field>
+                                {/* Error Message */}
                                 {error && (
                                     <p className="text-sm text-red-500">
                                         {error}

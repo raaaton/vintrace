@@ -31,6 +31,7 @@ export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
     const isDesktop = useMediaQuery("(min-width: 768px)");
 
+    // Desktop: Dialog modal
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
@@ -47,6 +48,7 @@ export default function AddVehicleButton() {
         );
     }
 
+    // Mobile: Bottom drawer
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
@@ -157,6 +159,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
             onSubmit={handleSubmit}
             className={cn("grid items-start gap-6", className)}
         >
+            {/* Make & Year */}
             <div className="flex gap-3">
                 <div className="flex flex-col gap-3 flex-1">
                     <Label htmlFor="make">Marque</Label>
@@ -237,6 +240,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                 </div>
             )}
 
+            {/* VIN */}
             <div className="flex flex-col gap-3">
                 <Label htmlFor="vin">VIN</Label>
                 <Input
@@ -248,6 +252,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                     required
                 />
             </div>
+            {/* License Plate */}
             <div className="flex flex-col gap-3">
                 <Label htmlFor="license_plate">Plaque d'immatriculation</Label>
                 <Input
@@ -259,6 +264,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                     required
                 />
             </div>
+            {/* Cover Image */}
             <div className="flex flex-col gap-3 justify-center">
                 <Label>Photo principale du véhicule</Label>
                 <CoverImageUploader
@@ -271,6 +277,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                 {isPending ? "Création..." : "Créer la fiche véhicule"}
             </Button>
 
+            {/* Image Cropper Modal */}
             {imageToCrop && (
                 <ImageCropper 
                     image={imageToCrop}

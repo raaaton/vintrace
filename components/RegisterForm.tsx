@@ -83,6 +83,7 @@ export function RegisterForm({
                 <CardContent>
                     <form onSubmit={handleRegister}>
                         <FieldGroup>
+                            {/* OAuth Register */}
                             <GoogleAuthButton />
                             <FieldSeparator>Ou continuez avec</FieldSeparator>
                             <div className="flex flex-col gap-6">
@@ -148,6 +149,7 @@ export function RegisterForm({
                                         }
                                     />
                                 </Field>
+                                {/* Error Message */}
                                 {error && (
                                     <p className="text-sm text-red-500">
                                         {error}

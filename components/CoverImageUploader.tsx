@@ -30,6 +30,7 @@ export default function CoverImageUploader({
         });
     }, []);
 
+    // Desktop: Drag & drop zone
     if (isDesktop) {
         return (
             <FileUpload
@@ -87,6 +88,7 @@ export default function CoverImageUploader({
         );
     }
 
+    // Mobile: Simple file picker button
     return (
         <FileUpload
             maxFiles={1}
