@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Vehicle } from "@/types";
 import { ArrowUpRight } from "lucide-react";
-import { maskVIN } from "@/lib/utils";
 
 type VehicleHeroProps = {
     vehicle: Vehicle;
@@ -51,9 +50,9 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
                     <ArrowUpRight className="text-stone-400 group-hover:text-stone-50 transition-colors duration-250 w-6 h-6" />
                 </div>
 
-                {/* VIN */}
+                {/* License Plate */}
                 <p className="text-sm font-light font-mono tracking-widest uppercase text-stone-400 mb-8">
-                    {maskVIN(vehicle.vin)}
+                    {vehicle.license_plate}
                 </p>
 
                 {/* Kileage */}

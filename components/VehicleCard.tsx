@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Vehicle } from "@/types";
 import { ArrowUpRight } from "lucide-react";
-import { maskVIN } from "@/lib/utils";
 
 type VehicleCardProps = {
     vehicle: Vehicle;
@@ -35,9 +34,9 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                     <ArrowUpRight className="ml-auto text-stone-400 group-hover:text-stone-50 transition-colors duration-250" />
                 </h2>
 
-                {/* VIN */}
+                {/* License Plate */}
                 <p className="text-xs font-light font-mono tracking-wider uppercase text-stone-400 mb-4 pb-8 border-b border-b-stone-700/75">
-                    {maskVIN(vehicle.vin)}
+                    {vehicle.license_plate}
                 </p>
 
                 {/* Kileage */}

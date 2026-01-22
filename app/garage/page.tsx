@@ -90,6 +90,7 @@ async function VehicleContent() {
             model,
             year,
             vin,
+            license_plate,
             kileage,
             cover_image_url,
             slug
@@ -106,6 +107,7 @@ async function VehicleContent() {
             make: vehicle.make,
             model: vehicle.model,
             vin: vehicle.vin,
+            license_plate: vehicle.license_plate,
             image: vehicle.cover_image_url,
             kileage: vehicle.kileage,
             slug: vehicle.slug,
