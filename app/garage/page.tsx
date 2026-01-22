@@ -19,6 +19,10 @@ export const dynamic = 'force-dynamic';
 
 
 export default async function GaragePage() {
+    const headersList = await headers();
+    const userAgent = headersList.get("user-agent") || "";
+    const isMobile = /mobile/i.test(userAgent);
+
     const supabase = await createClient();
 
     const { count } = await supabase
@@ -47,7 +51,7 @@ export default async function GaragePage() {
             <Suspense
                 fallback={
                     !!count &&
-                    (count === 1 ? (
+                    (count === 1 && !isMobile ? (
                         <section className="flex justify-center">
                             <VehicleHeroSkeleton />
                         </section>
@@ -101,7 +105,7 @@ async function VehicleContent() {
             year: vehicle.year,
             make: vehicle.make,
             model: vehicle.model,
-            trim: vehicle.vin,
+            vin: vehicle.vin,
             image: vehicle.cover_image_url,
             kileage: vehicle.kileage,
             slug: vehicle.slug,

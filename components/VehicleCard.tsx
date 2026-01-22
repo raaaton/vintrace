@@ -37,7 +37,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
 
                 {/* VIN */}
                 <p className="text-xs font-light font-mono tracking-wider uppercase text-stone-400 mb-4 pb-8 border-b border-b-stone-700/75">
-                    {maskVIN(vehicle.trim)}
+                    {maskVIN(vehicle.vin)}
                 </p>
 
                 {/* Kileage */}
