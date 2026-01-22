@@ -9,25 +9,38 @@ type VehicleHeroProps = {
 
 export default function VehicleHero({ vehicle }: VehicleHeroProps) {
     return (
-        <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group flex flex-col md:flex-row items-stretch max-w-6xl mx-auto overflow-hidden">
-            {/* Badge année repositionné pour le format Hero */}
+        <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group flex flex-col md:flex-row items-stretch max-w-6xl mx-auto overflow-hidden w-fit select-none">
+            {/* Year badge */}
             <span className="text-stone-200 font-light text-[12px] bg-stone-900/90 absolute top-6 left-6 px-3 py-1 border border-stone-700 z-50">
                 {vehicle.year}
             </span>
 
-            {/* Section Image : prend 60% de la largeur sur desktop */}
-            <div className="md:w-[60%] aspect-[16/10] overflow-hidden flex justify-center items-center border-b md:border-b-0 md:border-r border-stone-700/75">
-                <Image
-                    className="w-full h-full object-cover hover:scale-[1.02] transition-all duration-1000 ease-out filter saturate-[0.85] group-hover:saturate-100"
-                    src={vehicle.image}
-                    alt={`${vehicle.make} ${vehicle.model}`}
-                    width={1600}
-                    height={1000}
-                    priority
-                />
+            {/* Image */}
+            <div className="md:w-[60%] aspect-[16/10] overflow-hidden flex justify-center items-center border-b md:border-b-0 md:border-r border-stone-700/75 w-fit">
+                <div className="w-full h-full relative">
+                    {/* SVG placeholder to force the 16:10 ratio */}
+                    <Image
+                        className="w-full h-full object-cover opacity-0"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3C/svg%3E"
+                        alt=""
+                        width={1920}
+                        height={1080}
+                    />
+                    {/* Real image positioned on top */}
+                    <Image
+                        className="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-all duration-1000 ease-out filter saturate-[0.85] group-hover:saturate-100"
+                        src={vehicle.image}
+                        alt={`${vehicle.make} ${vehicle.model}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 60vw"
+                        priority
+                    />
+                </div>
             </div>
+            {/* Content */}
             <div className="p-8 md:p-12 md:w-[40%] flex flex-col justify-center">
                 <div className="flex justify-between items-start mb-2">
+                    {/* Make & Model */}
                     <h2 className="text-2xl md:text-3xl text-stone-50 font-medium">
                         {vehicle.make}
                         <br />
@@ -38,10 +51,12 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
                     <ArrowUpRight className="text-stone-400 group-hover:text-stone-50 transition-colors duration-250 w-6 h-6" />
                 </div>
 
+                {/* VIN */}
                 <p className="text-sm font-light font-mono tracking-widest uppercase text-stone-400 mb-8">
-                    {maskVIN(vehicle.trim)}
+                    {maskVIN(vehicle.vin)}
                 </p>
 
+                {/* Kileage */}
                 <div className="mt-auto pt-8 border-t border-stone-700/75">
                     <p className="text-xs font-light tracking-wider uppercase text-stone-400 mb-1">
                         Kilométrage
