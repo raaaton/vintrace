@@ -7,6 +7,7 @@ import { AuthButton } from "@/components/AuthButton";
 import { AccountButton } from "@/components/AccountButton";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
+import Image from "next/image";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -44,13 +45,20 @@ export default function RootLayout({
                     <div className="h-svh flex flex-col">
                         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 fixed top-0 bg-background z-50">
                             <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm">
-                                <div className="flex gap-5 items-center">
+                                <div className="flex gap-5 items-center relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">
                                     <Link
                                         href="/"
                                         className="group text-[1.05rem] font-semibold flex items-center gap-2"
                                     >
-                                        <div className="w-4 h-4 bg-primary !rounded-[20%]"></div>
-                                        <span>VinTrace</span>
+                                        <Image
+                                            src="/images/logo.png"
+                                            alt="VinTrace Logo"
+                                            width={28}
+                                            height={28}
+                                        />
+                                        <span className="">
+                                            VinTrace
+                                        </span>
                                     </Link>
                                 </div>
                                 <div className="flex items-center gap-4">
