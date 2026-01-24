@@ -14,7 +14,8 @@
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
   -> App Store (100€/y) (+ apple login)
-- page /auth/auth-code-error
+- /auth/auth-code-error page
+- 404 page
 - auto-fill car info for
   -> add vehicle form with vin / license plate
   -> add event with picture
