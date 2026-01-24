@@ -2,7 +2,6 @@
 
 ## Dev
 
-- errors toaster console
 - vehicle page
 - account page
 - landing page
