@@ -182,7 +182,7 @@
 - google oauth application home page
 - google oauth DN
 - Open Source -> License
-- legal (+ export data)
+- legal (ToS, Privacy Policy + export data) -> Google OAuth Branding
 
 ## IDEAS
 
