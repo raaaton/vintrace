@@ -2,7 +2,6 @@
 
 ## Dev
 
-- delete associated bucket files on vehicle delete
 - errors toaster console
 - vehicle page
 - account page
