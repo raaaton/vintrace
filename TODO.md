@@ -2,6 +2,7 @@
 
 ## Dev
 
+- fix navbar scrolling on mobile devices
 - vehicle page
 - account page
 - landing page
