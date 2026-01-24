@@ -24,9 +24,9 @@ export default function CoverImageUploader({
     files: File[];
     setFilesAction: (files: File[]) => void;
 }) {
-    const onFileReject = React.useCallback((file: File, message: string) => {
-        toast.error(message, {
-            description: `"${file.name.length > 20 ? `${file.name.slice(0, 20)}...` : file.name}" has been rejected`,
+    const onFileReject = React.useCallback((file: File) => {
+        toast.error("Upload failed", {
+            description: `"${file.name.slice(0, 20)}${file.name.length > 20 ? "..." : ""}" is invalid or too large.`,
         });
     }, []);
 

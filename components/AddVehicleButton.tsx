@@ -8,14 +8,14 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
-    DialogTrigger
+    DialogTrigger,
 } from "@/components/ui/dialog";
 import {
     Drawer,
     DrawerContent,
     DrawerHeader,
     DrawerTitle,
-    DrawerTrigger
+    DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,7 +30,7 @@ import { ImageCropper } from "@/components/ImageCropper";
 export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
     const isDesktop = useMediaQuery(
-        "(min-width: 768px) and (min-height: 1024px)"
+        "(min-width: 768px) and (min-height: 1024px)",
     );
 
     // Desktop: Dialog modal
@@ -71,10 +71,10 @@ export default function AddVehicleButton() {
 
 function ProfileForm({
     setOpen,
-    className
+    className,
 }: ComponentProps<"form"> & { setOpen: (open: boolean) => void }) {
     const isDesktop = useMediaQuery(
-        "(min-width: 768px) and (min-height: 1024px)"
+        "(min-width: 768px) and (min-height: 1024px)",
     );
     const router = useRouter();
 
@@ -103,7 +103,7 @@ function ProfileForm({
     const handleCropComplete = (blob: Blob) => {
         const croppedFile = new File([blob], "cover_cropped.webp", {
             type: "image/webp",
-            lastModified: Date.now()
+            lastModified: Date.now(),
         });
 
         setFiles([croppedFile]);
@@ -127,7 +127,7 @@ function ProfileForm({
             const supabase = await createClient();
 
             const {
-                data: { user }
+                data: { user },
             } = await supabase.auth.getUser();
 
             const vehicleId = crypto.randomUUID();
@@ -145,8 +145,8 @@ function ProfileForm({
                     user!,
                     formData.get("cover_image") as File,
                     vehicleId as string,
-                    "cover-image"
-                )
+                    "cover-image",
+                ),
             });
 
             if (error) throw error;
@@ -156,9 +156,7 @@ function ProfileForm({
             router.refresh();
         } catch (error: any) {
             console.error("Error submitting form: ", error);
-            toast.error(
-                "Erreur lors de l'ajout du véhicule : " + error.message
-            );
+            toast.error("Erreur lors de l'ajout du véhicule");
         } finally {
             setIsPending(false);
         }
