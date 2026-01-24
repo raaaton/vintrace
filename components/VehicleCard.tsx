@@ -1,12 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import type { Vehicle } from "@/types";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Trash2 } from "lucide-react";
+import { deleteVehicle } from "@/app/actions/vehicle-actions";
 
 type VehicleCardProps = {
     vehicle: Vehicle;
 };
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
+    const handleDelete = (e: React.MouseEvent, vehicleId: string) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        deleteVehicle(vehicleId);
+    };
     return (
         <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group">
             {/* Year Badge */}
@@ -17,7 +26,11 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             <div className="aspect-[16/10] overflow-hidden flex justify-center items-center">
                 <Image
                     className="aspect-[16/10] object-cover hover:scale-[1.05] transition-all duration-1500 ease-out filter saturate-[0.85] group-hover:saturate-100"
-                    src={vehicle.image ? vehicle.image : "/images/vehicle-placeholder.webp"}
+                    src={
+                        vehicle.image
+                            ? vehicle.image
+                            : "/images/vehicle-placeholder.webp"
+                    }
                     alt={vehicle.make + " " + vehicle.model}
                     width={1920}
                     height={1080}
@@ -43,11 +56,25 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <span className="text-xs font-light tracking-wider uppercase text-stone-400">
                     Kilométrage
                 </span>
-                <div className="flex items-end mt-1 text-xs/2">
-                    <span className="text-sm font-light tracking-wider uppercase text-stone-50 font-mono mr-1">
-                        {vehicle.kileage.toLocaleString("en-US")}
-                    </span>
-                    <span className="text-sm text-stone-400">km</span>
+                <div className="flex justify-between items-center">
+                    <div className="flex items-end mt-1 text-xs/2">
+                        <span className="text-sm font-light tracking-wider uppercase text-stone-50 font-mono mr-1">
+                            {vehicle.kileage.toLocaleString("en-US")}
+                        </span>
+                        <span className="text-sm text-stone-400">km</span>
+                    </div>
+
+                    {/* Temporary Delete Button */}
+                    <button
+                        className="hover:text-primary transition-all duration-300"
+                        onClick={(e) => handleDelete(e, vehicle.id)}
+                    >
+                        <Trash2
+                            strokeWidth={1.25}
+                            size={20}
+                            color="currentColor"
+                        />
+                    </button>
                 </div>
             </div>
         </div>

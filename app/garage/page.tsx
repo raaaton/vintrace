@@ -103,6 +103,7 @@ async function VehicleContent() {
 
     const vehicles: Vehicle[] =
         data?.map((vehicle) => ({
+            id: vehicle.id,
             year: vehicle.year,
             make: vehicle.make,
             model: vehicle.model,
