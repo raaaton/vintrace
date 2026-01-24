@@ -8,14 +8,14 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
+    DialogTrigger
 } from "@/components/ui/dialog";
 import {
     Drawer,
     DrawerContent,
     DrawerHeader,
     DrawerTitle,
-    DrawerTrigger,
+    DrawerTrigger
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,7 +29,9 @@ import { ImageCropper } from "@/components/ImageCropper";
 
 export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
-    const isDesktop = useMediaQuery("(min-width: 768px)");
+    const isDesktop = useMediaQuery(
+        "(min-width: 768px) and (min-height: 1024px)"
+    );
 
     // Desktop: Dialog modal
     if (isDesktop) {
@@ -67,8 +69,13 @@ export default function AddVehicleButton() {
     );
 }
 
-function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen: (open: boolean) => void }) {
-    const isDesktop = useMediaQuery("(min-width: 768px)");
+function ProfileForm({
+    setOpen,
+    className
+}: ComponentProps<"form"> & { setOpen: (open: boolean) => void }) {
+    const isDesktop = useMediaQuery(
+        "(min-width: 768px) and (min-height: 1024px)"
+    );
     const router = useRouter();
 
     const [files, setFiles] = useState<File[]>([]);
@@ -86,7 +93,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
 
         const reader = new FileReader();
         reader.onload = () => {
-            if (typeof reader.result === 'string') {
+            if (typeof reader.result === "string") {
                 setImageToCrop(reader.result);
             }
         };
@@ -94,14 +101,13 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
     };
 
     const handleCropComplete = (blob: Blob) => {
-
-        const croppedFile = new File([blob], "cover_cropped.webp", { 
+        const croppedFile = new File([blob], "cover_cropped.webp", {
             type: "image/webp",
-            lastModified: Date.now() 
+            lastModified: Date.now()
         });
 
         setFiles([croppedFile]);
-        
+
         setImageToCrop(null);
     };
 
@@ -121,7 +127,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
             const supabase = await createClient();
 
             const {
-                data: { user },
+                data: { user }
             } = await supabase.auth.getUser();
 
             const vehicleId = crypto.randomUUID();
@@ -135,7 +141,12 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
                 license_plate: formData.get("license_plate") as string,
                 vin: formData.get("vin") as string,
                 kileage: Number(formData.get("kileage")),
-                cover_image_url: await getCoverImageLink(user!, formData.get("cover_image") as File, vehicleId as string, "cover-image"),
+                cover_image_url: await getCoverImageLink(
+                    user!,
+                    formData.get("cover_image") as File,
+                    vehicleId as string,
+                    "cover-image"
+                )
             });
 
             if (error) throw error;
@@ -143,11 +154,10 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
             toast.success("Véhicule ajouté avec succès !");
             setOpen(false);
             router.refresh();
-
         } catch (error: any) {
             console.error("Error submitting form: ", error);
             toast.error(
-                "Erreur lors de l'ajout du véhicule : " + error.message,
+                "Erreur lors de l'ajout du véhicule : " + error.message
             );
         } finally {
             setIsPending(false);
@@ -279,7 +289,7 @@ function ProfileForm({ setOpen, className }: ComponentProps<"form"> & { setOpen:
 
             {/* Image Cropper Modal */}
             {imageToCrop && (
-                <ImageCropper 
+                <ImageCropper
                     image={imageToCrop}
                     onCropComplete={handleCropComplete}
                     onCancel={() => {
