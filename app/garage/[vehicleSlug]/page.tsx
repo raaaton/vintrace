@@ -17,7 +17,6 @@ export default async function VehiclePage({
         .from("vehicles")
         .select(`make, model`)
         .eq("slug", vehicleSlug)
-        .eq("owner_id", user?.id)
         .single(); // Security: the user must be the owner
 
     if (error || !data) {
