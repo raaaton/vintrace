@@ -3,13 +3,11 @@ import { NextResponse, type NextRequest } from "next/server";
 import { hasEnvVars } from "../utils";
 
 export async function updateSession(request: NextRequest) {
-    let supabaseResponse = NextResponse.next({
-        request,
-    });
+    const pathname = request.nextUrl.pathname;
 
-    if (!hasEnvVars) {
-        return supabaseResponse;
-    }
+    let supabaseResponse = NextResponse.next({ request });
+
+    if (!hasEnvVars) return supabaseResponse;
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -21,42 +19,39 @@ export async function updateSession(request: NextRequest) {
                 },
                 setAll(cookiesToSet) {
                     cookiesToSet.forEach(({ name, value }) =>
-                        request.cookies.set(name, value)
+                        request.cookies.set(name, value),
                     );
-                    supabaseResponse = NextResponse.next({
-                        request,
-                    });
+                    supabaseResponse = NextResponse.next({ request });
                     cookiesToSet.forEach(({ name, value, options }) =>
-                        supabaseResponse.cookies.set(name, value, options)
+                        supabaseResponse.cookies.set(name, value, options),
                     );
                 },
             },
-        }
+        },
     );
 
-    // IMPORTANT: Ne rien exécuter entre createServerClient et getClaims()
+    // Refresh session if expired - MUST be called before any other Supabase logic
     const { data } = await supabase.auth.getClaims();
     const user = data?.claims;
 
-    // 1. Redirection si l'utilisateur est connecté et essaie d'accéder à la racine (/)
-    if (user && request.nextUrl.pathname === "/") {
+    // Redirect logged-in users from Landing (/) to Dashboard
+    if (user && pathname === "/") {
         const url = request.nextUrl.clone();
         url.pathname = "/garage";
         const redirectResponse = NextResponse.redirect(url);
+        // Transfer updated cookies to the redirect response
         supabaseResponse.cookies.getAll().forEach((cookie) => {
             redirectResponse.cookies.set(cookie);
         });
         return redirectResponse;
     }
 
-    // 2. Redirection vers /login si l'utilisateur n'est pas connecté et tente d'accéder à une page privée
-    if (
-        request.nextUrl.pathname !== "/" &&
-        !user &&
-        !request.nextUrl.pathname.startsWith("/login") &&
-        !request.nextUrl.pathname.startsWith("/register") &&
-        !request.nextUrl.pathname.startsWith("/auth")
-    ) {
+    // Protect private routes: Redirect guests to /login
+    const isAuthRoute =
+        pathname.startsWith("/login") ||
+        pathname.startsWith("/register") ||
+        pathname.startsWith("/auth");
+    if (pathname !== "/" && !user && !isAuthRoute) {
         const url = request.nextUrl.clone();
         url.pathname = "/login";
         const response = NextResponse.redirect(url);
@@ -66,12 +61,10 @@ export async function updateSession(request: NextRequest) {
         return response;
     }
 
+    // Prevent logged-in users from accessing Auth pages
     if (
-        request.nextUrl.pathname !== "/" &&
-        user && (
-            request.nextUrl.pathname.startsWith("/login") ||
-            request.nextUrl.pathname.startsWith("/register")
-        )
+        user &&
+        (pathname.startsWith("/login") || pathname.startsWith("/register"))
     ) {
         const url = request.nextUrl.clone();
         url.pathname = "/garage";
@@ -85,13 +78,13 @@ export async function updateSession(request: NextRequest) {
     // IMPORTANT: You *must* return the supabaseResponse object as it is.
     // If you're creating a new response object with NextResponse.next() make sure to:
     // 1. Pass the request in it, like so:
-    //      const myNewResponse = NextResponse.next({ request })
+    // const myNewResponse = NextResponse.next({ request })
     // 2. Copy over the cookies, like so:
-    //      myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
+    // myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
     // 3. Change the myNewResponse object to fit your needs, but avoid changing
-    //      the cookies!
+    // the cookies!
     // 4. Finally:
-    //      return myNewResponse
+    // return myNewResponse
     // If this is not done, you may be causing the browser and server to go out
     // of sync and terminate the user's session prematurely!
 
