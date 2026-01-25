@@ -9,15 +9,11 @@ export default async function VehiclePage({
     const supabase = await createClient();
     const { vehicleSlug } = await params;
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
-
     const { data, error } = await supabase
         .from("vehicles")
         .select(`make, model`)
         .eq("slug", vehicleSlug)
-        .single(); // Security: the user must be the owner
+        .single();
 
     if (error || !data) {
         if (error && error.code !== "PGRST116") {
