@@ -7,11 +7,10 @@ import { AuthButton } from "@/components/AuthButton";
 import { AccountButton } from "@/components/AccountButton";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
-import Image from "next/image";
 
 const inter = Inter({
     subsets: ["latin"],
-    display: "swap",
+    display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -25,12 +24,12 @@ export const metadata: Metadata = {
         siteName: "VinTrace",
         url: "https://vin-trace.vercel.app",
         type: "website",
-        locale: "fr_FR",
-    },
+        locale: "fr_FR"
+    }
 };
 
 export default function RootLayout({
-    children,
+    children
 }: {
     children: React.ReactNode;
 }) {
@@ -42,23 +41,16 @@ export default function RootLayout({
                     defaultTheme="system"
                     enableSystem
                 >
-                    <div className="h-svh flex flex-col">
-                        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 fixed top-0 bg-background z-50">
-                            <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm">
-                                <div className="flex gap-5 items-center relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">
+                    <div className="min-h-svh flex flex-col">
+                        <nav className="w-full flex justify-center border-b border-b-foreground/10 sticky top-0 bg-background z-50">
+                            <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm h-16">
+                                <div className="flex gap-5 items-center">
                                     <Link
                                         href="/"
                                         className="group text-[1.05rem] font-semibold flex items-center gap-2"
                                     >
-                                        <Image
-                                            src="/images/logo.png"
-                                            alt="VinTrace Logo"
-                                            width={28}
-                                            height={28}
-                                        />
-                                        <span className="">
-                                            VinTrace
-                                        </span>
+                                        <div className="w-4 h-4 bg-primary !rounded-[20%]"></div>
+                                        <span>VinTrace</span>
                                     </Link>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -73,9 +65,10 @@ export default function RootLayout({
                         </nav>
 
                         <Toaster position="top-right" richColors />
+
                         <main
                             role="main"
-                            className="flex-1 w-full flex flex-col items-center mt-16"
+                            className="flex-1 w-full flex flex-col items-center"
                         >
                             {children}
                         </main>
