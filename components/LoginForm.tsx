@@ -62,14 +62,11 @@ export function LoginForm({
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card>
+            <Card className="max-sm:border-none">
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">
                         Ravi de vous revoir
                     </CardTitle>
-                    <CardDescription>
-                        Connectez-vous avec votre compte Google
-                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleLogin}>
@@ -77,7 +74,7 @@ export function LoginForm({
                             {/* OAuth Login */}
                             <GoogleAuthButton />
                             <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
-                                Ou continuez avec
+                                Ou continuer avec
                             </FieldSeparator>
 
                             <div className="flex flex-col gap-6">

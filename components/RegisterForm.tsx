@@ -73,19 +73,16 @@ export function RegisterForm({
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card>
+            <Card className="max-sm:border-none">
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">Créer un compte</CardTitle>
-                    <CardDescription>
-                        Complétez le formulaire pour créer votre compte
-                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleRegister}>
                         <FieldGroup>
                             {/* OAuth Register */}
                             <GoogleAuthButton />
-                            <FieldSeparator>Ou continuez avec</FieldSeparator>
+                            <FieldSeparator>Ou continuer avec</FieldSeparator>
                             <div className="flex flex-col gap-6">
                                 <Field className="grid< gap-2">
                                     <Label htmlFor="fullName">
