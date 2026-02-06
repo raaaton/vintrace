@@ -7,10 +7,11 @@ import { AuthButton } from "@/components/AuthButton";
 import { AccountButton } from "@/components/AccountButton";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
+import Image from "next/image";
 
 const inter = Inter({
     subsets: ["latin"],
-    display: "swap"
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,12 +25,12 @@ export const metadata: Metadata = {
         siteName: "VinTrace",
         url: "https://vin-trace.vercel.app",
         type: "website",
-        locale: "fr_FR"
-    }
+        locale: "fr_FR",
+    },
 };
 
 export default function RootLayout({
-    children
+    children,
 }: {
     children: React.ReactNode;
 }) {
@@ -44,12 +45,17 @@ export default function RootLayout({
                     <div className="min-h-svh flex flex-col">
                         <nav className="w-full flex justify-center border-b border-b-foreground/10 sticky top-0 bg-background z-50">
                             <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm h-16">
-                                <div className="flex gap-5 items-center">
+                                <div className="flex gap-5 items-center relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100">
                                     <Link
                                         href="/"
                                         className="group text-[1.05rem] font-semibold flex items-center gap-2"
                                     >
-                                        <div className="w-4 h-4 bg-primary !rounded-[20%]"></div>
+                                        <Image
+                                            src="/images/logo.png"
+                                            alt="VinTrace Logo"
+                                            width={28}
+                                            height={28}
+                                        />
                                         <span>VinTrace</span>
                                     </Link>
                                 </div>
