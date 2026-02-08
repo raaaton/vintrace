@@ -3,6 +3,7 @@
 ## Dev
 
 - ~ vehicle page
+- fix vehicle card image skeleton
 - handle add vehicle form data integrity error
 - account page
 - landing page

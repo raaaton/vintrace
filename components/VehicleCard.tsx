@@ -19,8 +19,8 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <Image
                     className="aspect-[16/10] object-cover hover:scale-[1.05] transition-all duration-1500 ease-out filter saturate-[0.85] group-hover:saturate-100"
                     src={
-                        vehicle.image
-                            ? vehicle.image
+                        vehicle.cover_image_url
+                            ? vehicle.cover_image_url
                             : "/images/vehicle-placeholder.webp"
                     }
                     alt={vehicle.make + " " + vehicle.model}

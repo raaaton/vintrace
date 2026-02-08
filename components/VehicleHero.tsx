@@ -28,7 +28,7 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
                     {/* Real image positioned on top */}
                     <Image
                         className="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-all duration-1000 ease-out filter saturate-[0.85] group-hover:saturate-100"
-                        src={vehicle.image}
+                        src={vehicle.cover_image_url ? vehicle.cover_image_url : "/images/vehicle-placeholder.webp"}
                         alt={`${vehicle.make} ${vehicle.model}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 60vw"
