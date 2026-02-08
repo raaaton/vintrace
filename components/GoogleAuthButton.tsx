@@ -13,8 +13,7 @@ export default function GoogleAuthButton() {
             options: {
                 redirectTo: `${window.location.origin}/auth/callback`,
                 queryParams: {
-                    prompt: 'select_account',
-                    access_type: 'offline',
+                    access_type: 'offline'
                 },
             }
         });
