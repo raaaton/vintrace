@@ -16,7 +16,7 @@ export function LogoutButton() {
     return (
         <button
             onClick={logout}
-            className="hover:text-primary transition-all text-xs tracking-wider uppercase text-stone-400 cursor-pointer"
+            className="hover:text-primary transition-all text-xs tracking-wider uppercase text-muted-foreground cursor-pointer"
         >
             Déconnexion
         </button>

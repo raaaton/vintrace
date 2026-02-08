@@ -39,29 +39,29 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             {/* Content */}
             <div className="p-6">
                 {/* Make and Model */}
-                <h2 className="text-lg text-stone-50 mb-2 flex items-center gap-2">
+                <h2 className="text-lg text-foreground mb-2 flex items-center gap-2">
                     {vehicle.make}
-                    <span className="font-light text-stone-400 text-[1rem]">
+                    <span className="font-light text-muted-foreground text-[1rem]">
                         {vehicle.model}
                     </span>
-                    <ArrowUpRight className="ml-auto text-stone-400 group-hover:text-stone-50 transition-colors duration-250" />
+                    <ArrowUpRight className="ml-auto text-muted-foreground group-hover:text-foreground transition-colors duration-250" />
                 </h2>
 
                 {/* License Plate */}
-                <p className="text-xs font-light font-mono tracking-wider uppercase text-stone-400 mb-4 pb-8 border-b border-b-stone-700/75">
+                <p className="text-xs font-light font-mono tracking-wider uppercase text-muted-foreground mb-4 pb-8 border-b border-b-stone-700/75">
                     {vehicle.license_plate}
                 </p>
 
                 {/* Kileage */}
-                <span className="text-xs font-light tracking-wider uppercase text-stone-400">
+                <span className="text-xs font-light tracking-wider uppercase text-muted-foreground">
                     Kilométrage
                 </span>
                 <div className="flex justify-between items-center">
                     <div className="flex items-end mt-1 text-xs/2">
-                        <span className="text-sm font-light tracking-wider uppercase text-stone-50 font-mono mr-1">
+                        <span className="text-sm font-light tracking-wider uppercase text-foreground font-mono mr-1">
                             {vehicle.kileage.toLocaleString("en-US")}
                         </span>
-                        <span className="text-sm text-stone-400">km</span>
+                        <span className="text-sm text-muted-foreground">km</span>
                     </div>
 
                     {/* Temporary Delete Button */}

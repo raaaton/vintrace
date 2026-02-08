@@ -25,34 +25,34 @@ export default function VehicleCardSkeleton() {
 
             {/* Content */}
             <div className="p-6">
-                <h2 className="text-lg text-stone-50/0 mb-2 flex items-center gap-2">
+                <h2 className="text-lg text-foreground/0 mb-2 flex items-center gap-2">
                     {/* Make */}
                     <Skeleton className="p-0 w-fit">#######</Skeleton>
                     {/* Model */}
-                    <Skeleton className="p-0 font-light text-stone-400/0 w-fit">
+                    <Skeleton className="p-0 font-light text-muted-foreground/0 w-fit">
                         #########
                     </Skeleton>
-                    <ArrowUpRight className="ml-auto text-stone-400 group-hover:text-stone-50 transition-colors duration-250" />
+                    <ArrowUpRight className="ml-auto text-muted-foreground group-hover:text-foreground transition-colors duration-250" />
                 </h2>
 
                 {/* VIN */}
                 <div className="mb-4 pb-8 border-b border-b-stone-700/75">
-                    <Skeleton className="text-xs font-light font-mono tracking-wider uppercase text-stone-400/0 w-fit">
+                    <Skeleton className="text-xs font-light font-mono tracking-wider uppercase text-muted-foreground/0 w-fit">
                         ############
                     </Skeleton>
                 </div>
 
                 {/* Kileage */}
                 <div className="text-xs/2">
-                    <span className="text-xs font-light tracking-wider uppercase text-stone-400 lh-1">
+                    <span className="text-xs font-light tracking-wider uppercase text-muted-foreground lh-1">
                         Kilométrage
                     </span>
                     <br />
                     <div className="flex items-end mt-1 text-xs/2">
-                        <Skeleton className="text-sm font-light tracking-wider uppercase text-stone-50/0 font-mono w-fit">
+                        <Skeleton className="text-sm font-light tracking-wider uppercase text-foreground/0 font-mono w-fit">
                             ######
                         </Skeleton>
-                        <span className="text-sm ml-1 text-stone-400">km</span>
+                        <span className="text-sm ml-1 text-muted-foreground">km</span>
                     </div>
                 </div>
             </div>

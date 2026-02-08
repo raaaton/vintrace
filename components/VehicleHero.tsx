@@ -40,29 +40,29 @@ export default function VehicleHero({ vehicle }: VehicleHeroProps) {
             <div className="p-8 md:p-12 md:w-[40%] flex flex-col justify-center">
                 <div className="flex justify-between items-start mb-2">
                     {/* Make & Model */}
-                    <h2 className="text-2xl md:text-3xl text-stone-50 font-medium">
+                    <h2 className="text-2xl md:text-3xl text-foreground font-medium">
                         {vehicle.make}
                         <br />
-                        <span className="font-light text-stone-400">
+                        <span className="font-light text-muted-foreground">
                             {vehicle.model}
                         </span>
                     </h2>
-                    <ArrowUpRight className="text-stone-400 group-hover:text-stone-50 transition-colors duration-250 w-6 h-6" />
+                    <ArrowUpRight className="text-muted-foreground group-hover:text-foreground transition-colors duration-250 w-6 h-6" />
                 </div>
 
                 {/* License Plate */}
-                <p className="text-sm font-light font-mono tracking-widest uppercase text-stone-400 mb-8">
+                <p className="text-sm font-light font-mono tracking-widest uppercase text-muted-foreground mb-8">
                     {vehicle.license_plate}
                 </p>
 
                 {/* Kileage */}
                 <div className="mt-auto pt-8 border-t border-stone-700/75">
-                    <p className="text-xs font-light tracking-wider uppercase text-stone-400 mb-1">
+                    <p className="text-xs font-light tracking-wider uppercase text-muted-foreground mb-1">
                         Kilométrage
                     </p>
-                    <p className="text-2xl font-light text-stone-50 font-mono">
+                    <p className="text-2xl font-light text-foreground font-mono">
                         {vehicle.kileage.toLocaleString("en-US")}
-                        <span className="text-sm ml-2 text-stone-400">km</span>
+                        <span className="text-sm ml-2 text-muted-foreground">km</span>
                     </p>
                 </div>
             </div>

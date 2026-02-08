@@ -19,7 +19,7 @@ export async function AuthButton() {
         <div className="flex gap-6 items-center">
             <Link
                 href="/login"
-                className="hover:text-primary transition-all text-xs tracking-wider uppercase text-stone-400 cursor-pointer"
+                className="hover:text-primary transition-all text-xs tracking-wider uppercase text-muted-foreground cursor-pointer"
             >
                 Connexion
             </Link>

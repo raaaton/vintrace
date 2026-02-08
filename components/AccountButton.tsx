@@ -11,7 +11,7 @@ export async function AccountButton() {
 
     return user ? (
         <Link href="/account" className="flex items-center gap-4">
-            <span className="hover:text-primary transition-all text-xs tracking-wider uppercase text-stone-400 cursor-pointer">
+            <span className="hover:text-primary transition-all text-xs tracking-wider uppercase text-muted-foreground cursor-pointer">
                 Mon Compte
             </span>
         </Link>

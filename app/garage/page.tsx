@@ -33,12 +33,12 @@ export default async function GaragePage() {
         <div className="mt-8 mx-auto w-[90%] sm:w-[80%] lg:w-[75%]">
             <header className="flex items-center justify-between mb-16 border-b border-foreground/10 pb-8">
                 <div className="flex flex-col">
-                    <h1 className="text-2xl font-light tracking-tight text-stone-50 mb-2">
+                    <h1 className="text-2xl font-light tracking-tight text-foreground mb-2">
                         Garage
                     </h1>
                     <Suspense
                         fallback={
-                            <Skeleton className="text-stone-400/0 text-[0.8rem] tracking-wide font-light w-fit">
+                            <Skeleton className="text-muted-foreground/0 text-[0.8rem] tracking-wide font-light w-fit">
                                 {count === 1 ? "X Véhicule" : "X Véhicules"}
                             </Skeleton>
                         }
@@ -143,7 +143,7 @@ async function VehicleContent() {
                     <VehicleHero vehicle={vehicles[0]} />
                 </Link>
             ) : (
-                <p className="text-stone-400">
+                <p className="text-muted-foreground">
                     Aucun véhicule trouvé. Ajoutez-en un pour commencer à suivre
                     son historique.
                 </p>
@@ -172,7 +172,7 @@ async function VehicleNumber() {
         <>
             {data && !error
                 ? data?.length > 0 && (
-                      <p className="text-stone-400 text-[0.8rem] tracking-wide font-light">
+                      <p className="text-muted-foreground text-[0.8rem] tracking-wide font-light">
                           {data?.length} Véhicule
                           {data?.length !== 1 ? "s" : ""}
                       </p>

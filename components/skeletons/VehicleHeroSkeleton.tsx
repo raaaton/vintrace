@@ -34,22 +34,22 @@ export default function VehicleHeroSkeleton() {
                             ############
                         </Skeleton>
                     </div>
-                    <ArrowUpRight className="text-stone-400 group-hover:text-stone-50 transition-colors duration-250 w-6 h-6" />
+                    <ArrowUpRight className="text-muted-foreground group-hover:text-foreground transition-colors duration-250 w-6 h-6" />
                 </div>
 
                 {/* VIN */}
-                <Skeleton className="text-sm font-light font-mono tracking-widest uppercase text-stone-400/0 mb-8 w-fit">
+                <Skeleton className="text-sm font-light font-mono tracking-widest uppercase text-muted-foreground/0 mb-8 w-fit">
                     ############
                 </Skeleton>
 
                 {/* Kileage */}
                 <div className="mt-auto pt-8 border-t border-stone-700/75">
-                    <p className="text-xs font-light tracking-wider uppercase text-stone-400 mb-1">
+                    <p className="text-xs font-light tracking-wider uppercase text-muted-foreground mb-1">
                         Kilométrage
                     </p>
                     <div className="text-2xl font-light flex items-end">
                         <Skeleton className="text-stone-50/0 font-mono w-fit">######</Skeleton>
-                        <span className="text-sm ml-2 text-stone-400">km</span>
+                        <span className="text-sm ml-2 text-muted-foreground">km</span>
                     </div>
                 </div>
             </div>
