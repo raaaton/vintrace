@@ -2,8 +2,7 @@
 
 ## Dev
 
-- vehicle page
-- fix navbar scrolling on mobile devices
+- ~ vehicle page
 - account page
 - landing page
 - onboarding
@@ -172,8 +171,6 @@
 
 ## PROD
 
-- enlever prompt: 'select_account' à loginForm/registerForm pour pas avoir a
-  voir le prompt google quand on a un seul compte google
 - Emails (style)
 - Emails (SMTP)
 - DN (vintrace.fr)
@@ -186,4 +183,4 @@
 
 ## IDEAS
 
-- Referal CarVertical link on the VIN in the Showcase page
+- Referral CarVertical link on the VIN in the Showcase page
