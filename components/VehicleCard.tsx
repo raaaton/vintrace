@@ -1,21 +1,13 @@
-"use client";
-
 import Image from "next/image";
 import type { Vehicle } from "@/types";
-import { ArrowUpRight, Trash2 } from "lucide-react";
-import { deleteVehicle } from "@/app/actions/vehicle-actions";
+import { ArrowUpRight } from "lucide-react";
+import DeleteVehicleButton from "@/components/DeleteVehicleButton";
 
 type VehicleCardProps = {
     vehicle: Vehicle;
 };
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
-    const handleDelete = (e: React.MouseEvent, vehicleId: string) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        deleteVehicle(vehicleId);
-    };
     return (
         <div className="bg-stone-900/25 relative p-0 border border-stone-700/75 hover:border-stone-500/75 transition-colors ease-out group">
             {/* Year Badge */}
@@ -67,16 +59,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                     </div>
 
                     {/* Temporary Delete Button */}
-                    <button
-                        className="hover:text-primary transition-all duration-300"
-                        onClick={(e) => handleDelete(e, vehicle.id)}
-                    >
-                        <Trash2
-                            strokeWidth={1.25}
-                            size={20}
-                            color="currentColor"
-                        />
-                    </button>
+                    <DeleteVehicleButton vehicleId={vehicle.id} />
                 </div>
             </div>
         </div>
