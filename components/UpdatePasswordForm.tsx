@@ -44,9 +44,9 @@ export function UpdatePasswordForm({
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card>
+            <Card className="max-sm:border-none">
                 <CardHeader>
-                    <CardTitle className="text-2xl">
+                    <CardTitle className="text-xl md:text-2xl">
                         Nouveau mot de passe
                     </CardTitle>
                 </CardHeader>
