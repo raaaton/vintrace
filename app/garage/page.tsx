@@ -3,7 +3,7 @@ import VehicleHero from "@/components/VehicleHero";
 import VehicleHeroSkeleton from "@/components/skeletons/VehicleHeroSkeleton";
 import VehicleCardSkeleton from "@/components/skeletons/VehicleCardSkeleton";
 import Link from "next/link";
-import type { Vehicle } from "@/types";
+import type { Vehicle } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
 import { Suspense } from "react";

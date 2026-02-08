@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Vehicle } from "@/types";
+import type { Vehicle } from "@/lib/types";
 import { ArrowUpRight } from "lucide-react";
 
 type VehicleHeroProps = {
