@@ -61,7 +61,9 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                         <span className="text-sm font-light tracking-wider uppercase text-foreground font-mono mr-1">
                             {vehicle.kileage.toLocaleString("en-US")}
                         </span>
-                        <span className="text-sm text-muted-foreground">km</span>
+                        <span className="text-sm text-muted-foreground">
+                            km
+                        </span>
                     </div>
 
                     {/* Temporary Delete Button */}

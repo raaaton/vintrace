@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Trash2 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function VehicleCardSkeleton() {
@@ -43,17 +43,27 @@ export default function VehicleCardSkeleton() {
                 </div>
 
                 {/* Kileage */}
-                <div className="text-xs/2">
-                    <span className="text-xs font-light tracking-wider uppercase text-muted-foreground lh-1">
-                        Kilométrage
-                    </span>
-                    <br />
+                <span className="text-xs font-light tracking-wider uppercase text-muted-foreground lh-1">
+                    Kilométrage
+                </span>
+                <div className="flex justify-between items-center">
                     <div className="flex items-end mt-1 text-xs/2">
                         <Skeleton className="text-sm font-light tracking-wider uppercase text-foreground/0 font-mono w-fit">
                             ######
                         </Skeleton>
-                        <span className="text-sm ml-1 text-muted-foreground">km</span>
+                        <span className="text-sm ml-1 text-muted-foreground">
+                            km
+                        </span>
                     </div>
+
+                    {/* Temporary Delete Button */}
+                    <button className="hover:text-primary transition-all duration-300">
+                        <Trash2
+                            strokeWidth={1.25}
+                            size={20}
+                            color="currentColor"
+                        />
+                    </button>
                 </div>
             </div>
         </div>
