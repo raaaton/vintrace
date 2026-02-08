@@ -3,6 +3,7 @@
 ## Dev
 
 - ~ vehicle page
+- handle add vehicle form data integrity error
 - account page
 - landing page
 - onboarding
