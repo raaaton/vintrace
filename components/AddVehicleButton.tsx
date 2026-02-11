@@ -30,7 +30,7 @@ import { ImageCropper } from "@/components/ImageCropper";
 export default function AddVehicleButton() {
     const [open, setOpen] = useState(false);
     const isDesktop = useMediaQuery(
-        "(min-width: 768px) and (min-height: 1024px)",
+        "(min-width: 768px) and (min-height: 850px)",
     );
 
     // Desktop: Dialog modal
@@ -74,7 +74,7 @@ function ProfileForm({
     className,
 }: ComponentProps<"form"> & { setOpen: (open: boolean) => void }) {
     const isDesktop = useMediaQuery(
-        "(min-width: 768px) and (min-height: 1024px)",
+        "(min-width: 768px) and (min-height: 850px)",
     );
     const router = useRouter();
 
