@@ -10,7 +10,15 @@
 - onboarding
 - monetization (polar.sh)
 - pwa
-- mobile native (capacitor)
+- optimize vehicle creation...
+  -> Decouple Modal: Create VehicleModalContainer (Client) to hold Dialog/Drawer logic, keeping the trigger button Server-side.
+  -> Extract VehicleForm (Client) from AddVehicleButton (Server)
+  -> Migrate DB logic to Server Actions (/actions/vehicle-actions.ts)
+  -> Replace router.refresh() with revalidatePath('/garage')
+  -> Force .webp (0.8 quality) on image crop to reduce upload payload
+  -> Implement useTransition for optimistic UI feedback
+
+- mobile native (capacitor)...
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
   -> App Store (100€/y) (+ apple login)
