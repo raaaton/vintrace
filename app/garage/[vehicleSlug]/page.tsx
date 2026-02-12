@@ -25,15 +25,15 @@ export default async function VehiclePage({
     }
 
     return (
-        <div className="relative w-full h-[25vh] md:h-[60vh] lg:h-[65vh] min-h-[400px] md:min-h-[500px] group overflow-hidden -z-10">
+        <div className="relative w-full h-[25vh] md:h-[60vh] lg:h-[65vh] min-h-[400px] md:min-h-[500px] group overflow-hidden">
             <Image
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover z-0"
                 src={data.cover_image_url}
                 alt={`${data.make} ${data.model}`}
                 width={1600}
                 height={1000}
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-6 lg:p-12 flex flex-row items-stretch justify-between gap-6 md:gap-8 text-foreground z-10">
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-6 lg:p-12 flex flex-row items-stretch justify-between gap-6 md:gap-8 text-foreground z-20">
                 <div className="max-w-4xl w-auto flex flex-col justify-end">
                     <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-2 md:mb-4">
                         <span className="text-muted-foreground text-xs lg:text-sm font-mono tracking-wider">
@@ -68,7 +68,7 @@ export default async function VehiclePage({
                     </span>
                 </div>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
         </div>
     );
 }
