@@ -41,9 +41,16 @@ export default async function VehiclePage({
                     <ArrowLeft size={16} /> Retour
                 </Link>
                 <div className="flex gap-4">
-                    <button className="flex items-center gap-2 px-3 py-3 backdrop-blur-md bg-secondary/35 hover:bg-secondary/50 uppercase text-xs font-semibold border border-foreground/25 hover:border-foreground/25 transition-colors ease-out">
-                        <Settings size={16} />
-                    </button>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <button className="flex items-center gap-2 px-3 py-3 backdrop-blur-md bg-secondary/35 hover:bg-secondary/50 uppercase text-xs font-semibold border border-foreground/25 hover:border-foreground/25 transition-colors ease-out">
+                                <Settings size={16} />
+                            </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>En construction 🚧</p>
+                        </TooltipContent>
+                    </Tooltip>
 
                     <Tooltip>
                         <TooltipTrigger asChild>
