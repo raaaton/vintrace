@@ -8,6 +8,7 @@ import { AccountButton } from "@/components/AccountButton";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
 import Image from "next/image";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -42,47 +43,51 @@ export default function RootLayout({
                     defaultTheme="system"
                     enableSystem
                 >
-                    <div className="min-h-svh flex flex-col">
-                        <nav className="w-full flex justify-center border-b border-b-foreground/10 sticky top-0 bg-background z-50">
-                            <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm h-16">
-                                <div className="flex gap-5 items-center relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 md:hover:after:origin-bottom-left md:hover:after:scale-x-100">
-                                    <Link
-                                        href="/"
-                                        className="group text-[1.05rem] font-semibold flex items-center gap-2"
-                                    >
-                                        <Image
-                                            src="/images/logo.png"
-                                            alt="VinTrace Logo"
-                                            width={28}
-                                            height={28}
-                                        />
-                                        <span>VinTrace</span>
-                                    </Link>
+                    <TooltipProvider>
+                        <div className="min-h-svh flex flex-col">
+                            <nav className="w-full flex justify-center border-b border-b-foreground/10 sticky top-0 bg-background z-50">
+                                <div className="w-[90%] sm:w-[80%] lg:w-[75%] flex justify-between items-center py-3 text-sm h-16">
+                                    <div className="flex gap-5 items-center relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 md:hover:after:origin-bottom-left md:hover:after:scale-x-100">
+                                        <Link
+                                            href="/"
+                                            className="group text-[1.05rem] font-semibold flex items-center gap-2"
+                                        >
+                                            <Image
+                                                src="/images/logo.png"
+                                                alt="VinTrace Logo"
+                                                width={28}
+                                                height={28}
+                                            />
+                                            <span>VinTrace</span>
+                                        </Link>
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <Suspense
+                                            fallback={<div>Chargement...</div>}
+                                        >
+                                            <AccountButton />
+                                            <AuthButton />
+                                        </Suspense>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <Suspense
-                                        fallback={<div>Chargement...</div>}
-                                    >
-                                        <AccountButton />
-                                        <AuthButton />
-                                    </Suspense>
-                                </div>
-                            </div>
-                        </nav>
+                            </nav>
 
-                        <Toaster position="top-right" richColors />
+                            <Toaster position="top-right" richColors />
 
-                        <main
-                            role="main"
-                            className="flex-1 w-full flex flex-col items-center"
-                        >
-                            {children}
-                        </main>
+                            <main
+                                role="main"
+                                className="flex-1 w-full flex flex-col items-center"
+                            >
+                                {children}
+                            </main>
 
-                        <footer className="w-full flex items-center justify-center border-t border-foreground/10 py-8 text-xs">
-                            <p className="text-muted-foreground">© 2026 VinTrace</p>
-                        </footer>
-                    </div>
+                            <footer className="w-full flex items-center justify-center border-t border-foreground/10 py-8 text-xs">
+                                <p className="text-muted-foreground">
+                                    © 2026 VinTrace
+                                </p>
+                            </footer>
+                        </div>
+                    </TooltipProvider>
                 </ThemeProvider>
             </body>
         </html>
