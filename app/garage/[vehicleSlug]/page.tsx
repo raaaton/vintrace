@@ -27,7 +27,6 @@ export default async function VehiclePage({
 
     if (error || !data) {
         if (error && error.code !== "PGRST116") {
-            // PGRST116 is the standard error "no rows returned"
             console.error("Database error:", error);
         }
         notFound();
@@ -35,6 +34,7 @@ export default async function VehiclePage({
 
     return (
         <>
+            {/* Top Navigation Bar */}
             <nav className="fixed z-[100] p-6 md:p-6 lg:p-12 w-full flex justify-between items-center">
                 <Link
                     href="/garage"
@@ -70,6 +70,8 @@ export default async function VehiclePage({
                     </Tooltip>
                 </div>
             </nav>
+
+            {/* Hero Section with Vehicle Stats */}
             <div className="relative w-full h-[25vh] md:h-[60vh] lg:h-[65vh] min-h-[400px] md:min-h-[500px] group overflow-hidden">
                 <Image
                     className="w-full h-full object-cover z-0"
@@ -115,47 +117,51 @@ export default async function VehiclePage({
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
             </div>
-            <div className="w-full px-6 md:px-12 mt-12">
+
+            {/* History & Events Tabs Section */}
+            <div className="w-full px-6 md:px-12 mt-12 overflow-hidden">
                 <Tabs defaultValue="all" className="w-full">
-                    {/* Header de la section : Tabs à gauche, Action à droite */}
+                    {/* Header: Filters on left, Actions on right */}
                     <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
-                        <TabsList>
-                            <TabsTrigger value="all">Tout</TabsTrigger>
-                            <TabsTrigger value="maintenance">
-                                Entretien
-                            </TabsTrigger>
-                            <TabsTrigger value="modification">
-                                Modifs
-                            </TabsTrigger>
-                            <TabsTrigger value="admin">Admin</TabsTrigger>
-                            <TabsTrigger value="event">Événement</TabsTrigger>
-                        </TabsList>
+                        <div className="w-full md:w-auto overflow-hidden">
+                            <TabsList>
+                                <TabsTrigger value="all">Tout</TabsTrigger>
+                                <TabsTrigger value="maintenance">
+                                    Entretien
+                                </TabsTrigger>
+                                <TabsTrigger value="modification">
+                                    Modifs
+                                </TabsTrigger>
+                                <TabsTrigger value="admin">Admin</TabsTrigger>
+                                <TabsTrigger value="event">
+                                    Événement
+                                </TabsTrigger>
+                            </TabsList>
+                        </div>
 
-                        {/* ... dans le TabsList, assure-toi que les triggers utilisent text-xs font-semibold ... */}
+                        <div className="flex items-center gap-4">
+                            <div className="flex flex-col items-end leading-none">
+                                <span className="hidden md:inline text-xs uppercase font-semibold tracking-wider text-muted-foreground">
+                                    5 Entrées
+                                </span>
+                            </div>
 
-<div className="flex items-center gap-4"> {/* Réduit gap à 4 pour matcher la nav */}
-    <div className="flex flex-col items-end leading-none">
-        <span className="hidden md:inline text-xs uppercase font-semibold tracking-wider text-muted-foreground">
-            5 Entrées
-        </span>
-    </div>
-
-    {/* Bouton AJOUTER Desktop : Copie conforme du style Nav */}
-    <button className="hidden md:flex items-center gap-2 px-3 py-2 lg:px-4 lg:py-3 text-primary-foreground bg-primary hover:bg-primary/90 uppercase text-xs font-semibold transition-colors ease-out">
-        <Plus size={16} strokeWidth={2.5} />
-        <span className="hidden md:inline">Ajouter</span>
-    </button>
-
-    {/* Bouton Mobile : On garde le fixed mais on ajuste pour la cohérence tactile */}
-    <button
-        className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
-        aria-label="Ajouter une entrée"
-    >
-        <Plus size={24} strokeWidth={2.5} />
-    </button>
-</div>
-
+                            {/* Responsive 'Add' Buttons: Inline on Desktop, FAB on Mobile */}
+                            <button className="hidden md:flex items-center gap-2 px-3 py-2 lg:px-4 lg:py-3 text-primary-foreground bg-primary hover:bg-primary/90 uppercase text-xs font-semibold transition-colors ease-out">
+                                <Plus size={16} strokeWidth={2.5} />
+                                <span className="hidden md:inline">
+                                    Ajouter
+                                </span>
+                            </button>
+                            <button
+                                className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
+                                aria-label="Ajouter une entrée"
+                            >
+                                <Plus size={24} strokeWidth={2.5} />
+                            </button>
+                        </div>
                     </div>
+
                     <TabsContent value="all">Tout</TabsContent>
                     <TabsContent value="maintenance">Entretien</TabsContent>
                     <TabsContent value="modification">Modifs</TabsContent>

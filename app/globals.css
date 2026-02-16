@@ -74,6 +74,16 @@
     }
 }
 
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 /* Disables native focus outline on Dialog content */
 
 [data-slot="dialog-content"] {

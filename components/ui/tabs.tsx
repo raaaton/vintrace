@@ -11,7 +11,10 @@ function Tabs({
     return (
         <TabsPrimitive.Root
             data-slot="tabs"
-            className={cn("flex flex-col gap-4", className)}
+            className={cn(
+                "flex flex-col gap-4 w-full",
+                className
+            )}
             {...props}
         />
     );
@@ -25,7 +28,8 @@ function TabsList({
         <TabsPrimitive.List
             data-slot="tabs-list"
             className={cn(
-                "inline-flex h-12 items-center justify-start bg-secondary/50 p-1 text-muted-foreground border border-white/5",
+                "inline-flex items-center justify-start bg-stone-900/25 border border-stone-700/75 p-1",
+                "w-fit max-w-full overflow-x-auto overflow-y-hidden scrollbar-hide",
                 className
             )}
             {...props}
@@ -41,10 +45,10 @@ function TabsTrigger({
         <TabsPrimitive.Trigger
             data-slot="tabs-trigger"
             className={cn(
-                // Aligné sur le style Nav : py-2/py-3 et text-xs
-                "inline-flex items-center justify-center whitespace-nowrap px-4 py-2 md:py-2 lg:py-3 text-xs font-semibold uppercase tracking-wider transition-all outline-none",
+                "inline-flex items-center justify-center whitespace-nowrap px-3 md:px-4 py-2.5 text-[10px] md:text-xs font-semibold uppercase tracking-widest transition-all outline-none",
                 "text-muted-foreground hover:text-foreground/80",
                 "data-[state=active]:bg-white data-[state=active]:text-black",
+                "flex-shrink-0",
                 className
             )}
             {...props}
@@ -59,7 +63,7 @@ function TabsContent({
     return (
         <TabsPrimitive.Content
             data-slot="tabs-content"
-            className={cn("mt-4 outline-none", className)}
+            className={cn("mt-4 outline-none w-full", className)}
             {...props}
         />
     );
