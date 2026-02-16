@@ -110,3 +110,13 @@
 [data-sonner-toast]:hover {
     background-color: hsl(var(--background)) !important;
 }
+
+/* Force le premier trigger à paraître actif au chargement initial */
+[data-radix-collection-item]:first-child {
+  color: black !important;
+}
+
+/* Redonne le contrôle à Radix dès qu'il se réveille */
+[data-state="inactive"]:first-child {
+  color: rgb(161 161 170) !important; /* la couleur grise habituelle */
+}

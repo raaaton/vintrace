@@ -1,16 +1,18 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { ArrowLeft, ArrowUpRight, Settings } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Settings, Plus } from "lucide-react";
 import Link from "next/link";
 import {
     Tooltip,
     TooltipContent,
-    TooltipTrigger,
+    TooltipTrigger
 } from "@/components/ui/tooltip";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 export default async function VehiclePage({
-    params,
+    params
 }: {
     params: { vehicleSlug: string };
 }) {
@@ -112,6 +114,44 @@ export default async function VehiclePage({
                     </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
+            </div>
+            <div className="w-full px-6 md:px-12 mt-12">
+                <Tabs defaultValue="all" className="w-full">
+                    {/* Header de la section : Tabs à gauche, Action à droite */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
+                        <TabsList>
+                            <TabsTrigger value="all">Tout</TabsTrigger>
+                            <TabsTrigger value="maintenance">
+                                Entretien
+                            </TabsTrigger>
+                            <TabsTrigger value="modification">
+                                Modifs
+                            </TabsTrigger>
+                            <TabsTrigger value="admin">Admin</TabsTrigger>
+                            <TabsTrigger value="event">Événement</TabsTrigger>
+                        </TabsList>
+
+                        <div className="flex items-center gap-6">
+                            <div className="flex flex-col items-end leading-none">
+                                <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground">
+                                    5 Entrées
+                                </span>
+                            </div>
+
+                            <button className="flex items-center gap-2 bg-primary px-4 py-2.5 text-primary-foreground hover:brightness-110 transition-all active:scale-95">
+                                <Plus size={14} strokeWidth={3} />
+                                <span className="text-[10px] font-black uppercase tracking-tighter">
+                                    Ajouter
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <TabsContent value="all">Tout</TabsContent>
+                    <TabsContent value="maintenance">Entretien</TabsContent>
+                    <TabsContent value="modification">Modifs</TabsContent>
+                    <TabsContent value="admin">Admin</TabsContent>
+                    <TabsContent value="event">Événements</TabsContent>
+                </Tabs>
             </div>
         </>
     );
