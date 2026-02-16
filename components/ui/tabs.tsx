@@ -1,70 +1,68 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Tabs as TabsPrimitive } from "radix-ui"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Tabs as TabsPrimitive } from "radix-ui";
+import { cn } from "@/lib/utils";
 
 function Tabs({
-  className,
-  ...props
+    className,
+    ...props
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
-  return (
-    <TabsPrimitive.Root
-      data-slot="tabs"
-      className={cn("flex flex-col gap-4", className)}
-      {...props}
-    />
-  )
+    return (
+        <TabsPrimitive.Root
+            data-slot="tabs"
+            className={cn("flex flex-col gap-4", className)}
+            {...props}
+        />
+    );
 }
 
 function TabsList({
-  className,
-  ...props
+    className,
+    ...props
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
-  return (
-    <TabsPrimitive.List
-      data-slot="tabs-list"
-      className={cn(
-        "inline-flex h-12 items-center justify-start bg-secondary/50 p-1 text-muted-foreground border border-white/5",
-        className
-      )}
-      {...props}
-    />
-  )
+    return (
+        <TabsPrimitive.List
+            data-slot="tabs-list"
+            className={cn(
+                "inline-flex h-12 items-center justify-start bg-secondary/50 p-1 text-muted-foreground border border-white/5",
+                className
+            )}
+            {...props}
+        />
+    );
 }
 
 function TabsTrigger({
-  className,
-  ...props
+    className,
+    ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
-  return (
-    <TabsPrimitive.Trigger
-      data-slot="tabs-trigger"
-      className={cn(
-        // Base : Typo technique, majuscule, transition fluide
-        "inline-flex items-center justify-center whitespace-nowrap px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
-        // État Inactif
-        "text-muted-foreground hover:text-foreground/80",
-        // État Actif : Fond blanc, texte noir (Contraste max comme ta ref)
-        "data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg",
-        className
-      )}
-      {...props}
-    />
-  )
+    return (
+        <TabsPrimitive.Trigger
+            data-slot="tabs-trigger"
+            className={cn(
+                // Aligné sur le style Nav : py-2/py-3 et text-xs
+                "inline-flex items-center justify-center whitespace-nowrap px-4 py-2 md:py-2 lg:py-3 text-xs font-semibold uppercase tracking-wider transition-all outline-none",
+                "text-muted-foreground hover:text-foreground/80",
+                "data-[state=active]:bg-white data-[state=active]:text-black",
+                className
+            )}
+            {...props}
+        />
+    );
 }
 
 function TabsContent({
-  className,
-  ...props
+    className,
+    ...props
 }: React.ComponentProps<typeof TabsPrimitive.Content>) {
-  return (
-    <TabsPrimitive.Content
-      data-slot="tabs-content"
-      className={cn("mt-4 outline-none", className)}
-      {...props}
-    />
-  )
+    return (
+        <TabsPrimitive.Content
+            data-slot="tabs-content"
+            className={cn("mt-4 outline-none", className)}
+            {...props}
+        />
+    );
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent };
