@@ -6,13 +6,13 @@ import Link from "next/link";
 import {
     Tooltip,
     TooltipContent,
-    TooltipTrigger
+    TooltipTrigger,
 } from "@/components/ui/tooltip";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default async function VehiclePage({
-    params
+    params,
 }: {
     params: { vehicleSlug: string };
 }) {

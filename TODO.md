@@ -4,6 +4,7 @@
 
 - ~ vehicle page
 - optimize the whole app
+- add feedback to every button
 - fix vehicle card image skeleton
 - handle add vehicle form data integrity error
 - account page
