@@ -63,7 +63,7 @@ export default function Entries({
     };
 
     return (
-        <div className="flex flex-col w-full max-w-5xl mx-auto py-10 px-4">
+        <div className="flex flex-col w-full max-w-5xl mx-auto py-10 px-4 md:px-6 pb-24 md:pb-16">
             {entries.map((entry, index) => {
                 const config = typeConfig[entry.type] || {
                     label: "???",
@@ -73,14 +73,14 @@ export default function Entries({
                 return (
                     <div
                         key={entry.id}
-                        className="relative flex gap-6 md:gap-10"
+                        className="relative flex gap-4 md:gap-10"
                     >
                         {/* --- LEFT: Date & Km --- */}
-                        <div className="w-24 md:w-32 pt-1 text-right shrink-0">
-                            <div className="text-sm font-mono text-white/90 tracking-tight">
+                        <div className="w-20 md:w-32 pt-1 text-right shrink-0">
+                            <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
                                 {entry.event_date}
                             </div>
-                            <div className="text-[11px] font-mono tracking-widest text-muted-foreground mt-1">
+                            <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
                                 {entry.kileage.toLocaleString()} km
                             </div>
                         </div>
@@ -100,34 +100,34 @@ export default function Entries({
                         </div>
 
                         {/* --- RIGHT: Content --- */}
-                        <div className="flex-1 pb-16">
-                            <div className="flex items-start justify-between w-full mb-1">
-                                <div className="flex items-center gap-3">
+                        <div className="flex-1 pb-12 md:pb-16">
+                            <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
+                                <div className="flex items-start gap-2 sm:gap-3 min-w-0">
                                     <Badge
                                         variant="outline"
-                                        className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground"
+                                        className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground shrink-0"
                                     >
                                         {config.label}
                                     </Badge>
-                                    <h3 className="text-lg text-white tracking-tight leading-none">
+                                    <h3 className="text-sm sm:text-lg text-white tracking-tight leading-none">
                                         {entry.title}
                                     </h3>
                                 </div>
-                                <div className="text-sm font-mono text-white/80 whitespace-nowrap ml-4">
+                                <div className="text-sm font-mono text-white/80 whitespace-nowrap sm:ml-4">
                                     {entry.cost > 0
                                         ? `${entry.cost.toLocaleString("en-US")} €`
                                         : "-- €"}
                                 </div>
                             </div>
 
-                            <div className="text-sm text-muted-foreground/60 mb-6">
+                            <div className="text-xs sm:text-sm text-muted-foreground/60 mb-4 md:mb-6">
                                 {entry.detailer}
                             </div>
 
                             {/* Description */}
                             {entry.description && (
-                                <div className="relative pl-4 border-l-2 border-white/5 py-1">
-                                    <p className="text-sm text-muted-foreground/80 italic leading-relaxed">
+                                <div className="relative pl-3 md:pl-4 border-l-2 border-white/5 py-1">
+                                    <p className="text-xs sm:text-sm text-muted-foreground/80 italic leading-relaxed">
                                         {entry.description}
                                     </p>
                                 </div>

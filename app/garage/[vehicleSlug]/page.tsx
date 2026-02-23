@@ -119,7 +119,7 @@ export default async function VehiclePage({
             </div>
 
             {/* History & Events Tabs Section */}
-            <div className="w-full px-6 md:px-12 mt-12 overflow-hidden">
+            <div className="w-full px-4 md:px-12 mt-8 md:mt-12 overflow-hidden">
                 <Tabs defaultValue="all" className="w-full">
                     {/* Header: Filters on left, Actions on right */}
                     <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
