@@ -8,8 +8,8 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Entries from "@/components/Entries";
 
 export default async function VehiclePage({
     params,
@@ -162,11 +162,21 @@ export default async function VehiclePage({
                         </div>
                     </div>
 
-                    <TabsContent value="all">Tout</TabsContent>
-                    <TabsContent value="maintenance">Entretien</TabsContent>
-                    <TabsContent value="modification">Modifs</TabsContent>
-                    <TabsContent value="admin">Admin</TabsContent>
-                    <TabsContent value="event">Événements</TabsContent>
+                    <TabsContent value="all">
+                        <Entries vehicleId={data.id} filter="all" />
+                    </TabsContent>
+                    <TabsContent value="maintenance">
+                        <Entries vehicleId={data.id} filter="maintenance" />
+                    </TabsContent>
+                    <TabsContent value="modification">
+                        <Entries vehicleId={data.id} filter="modification" />
+                    </TabsContent>
+                    <TabsContent value="admin">
+                        <Entries vehicleId={data.id} filter="admin" />
+                    </TabsContent>
+                    <TabsContent value="event">
+                        <Entries vehicleId={data.id} filter="event" />
+                    </TabsContent>
                 </Tabs>
             </div>
         </>

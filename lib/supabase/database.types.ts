@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      entries: {
+        Row: {
+          cost: number | null
+          created_at: string | null
+          description: string | null
+          detailer: string | null
+          event_date: string
+          id: string
+          kileage: number | null
+          owner_id: string
+          title: string
+          type: string
+          vehicle_id: string
+        }
+        Insert: {
+          cost?: number | null
+          created_at?: string | null
+          description?: string | null
+          detailer?: string | null
+          event_date: string
+          id?: string
+          kileage?: number | null
+          owner_id: string
+          title: string
+          type: string
+          vehicle_id: string
+        }
+        Update: {
+          cost?: number | null
+          created_at?: string | null
+          description?: string | null
+          detailer?: string | null
+          event_date?: string
+          id?: string
+          kileage?: number | null
+          owner_id?: string
+          title?: string
+          type?: string
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "maintenance_events_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "maintenance_events_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       event_files: {
         Row: {
           created_at: string | null
@@ -44,7 +101,7 @@ export type Database = {
             foreignKeyName: "event_files_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
-            referencedRelation: "maintenance_events"
+            referencedRelation: "entries"
             referencedColumns: ["id"]
           },
           {
@@ -52,60 +109,6 @@ export type Database = {
             columns: ["owner_id"]
             isOneToOne: false
             referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      maintenance_events: {
-        Row: {
-          cost: number | null
-          created_at: string | null
-          description: string | null
-          event_date: string
-          id: string
-          mileage: number | null
-          owner_id: string
-          title: string
-          type: string
-          vehicle_id: string
-        }
-        Insert: {
-          cost?: number | null
-          created_at?: string | null
-          description?: string | null
-          event_date: string
-          id?: string
-          mileage?: number | null
-          owner_id: string
-          title: string
-          type: string
-          vehicle_id: string
-        }
-        Update: {
-          cost?: number | null
-          created_at?: string | null
-          description?: string | null
-          event_date?: string
-          id?: string
-          mileage?: number | null
-          owner_id?: string
-          title?: string
-          type?: string
-          vehicle_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "maintenance_events_owner_id_fkey"
-            columns: ["owner_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "maintenance_events_vehicle_id_fkey"
-            columns: ["vehicle_id"]
-            isOneToOne: false
-            referencedRelation: "vehicles"
             referencedColumns: ["id"]
           },
         ]
