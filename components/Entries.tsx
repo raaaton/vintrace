@@ -68,7 +68,7 @@ export default function Entries({
     };
 
     return (
-        <div className="flex flex-col w-full max-w-5xl mx-auto py-10 px-4 md:px-6 pb-24 md:pb-16">
+        <div className="flex flex-col w-full max-w-5xl mx-auto py-6 px-4 md:px-6">
             {entries.map((entry, index) => {
                 const config = typeConfig[entry.type] || {
                     label: "???",

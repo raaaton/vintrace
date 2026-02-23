@@ -122,7 +122,7 @@ export default async function VehiclePage({
             <div className="w-full px-4 md:px-12 mt-8 md:mt-12 overflow-hidden">
                 <Tabs defaultValue="all" className="w-full">
                     {/* Header: Filters on left, Actions on right */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div className="flex flex-wrap items-center justify-between gap-4 md:border-b md:border-white/10 md:pb-6">
                         <div className="w-full md:w-auto overflow-hidden">
                             <TabsList>
                                 <TabsTrigger value="all">Tout</TabsTrigger>
