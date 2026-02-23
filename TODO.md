@@ -3,6 +3,7 @@
 ## Dev
 
 - ~ vehicle page
+- optimize the whole app
 - fix vehicle card image skeleton
 - handle add vehicle form data integrity error
 - account page
@@ -17,7 +18,6 @@
   -> Replace router.refresh() with revalidatePath('/garage')
   -> Force .webp (0.8 quality) on image crop to reduce upload payload
   -> Implement useTransition for optimistic UI feedback
-
 - mobile native (capacitor)...
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
