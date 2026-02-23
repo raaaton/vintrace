@@ -62,6 +62,11 @@ export default function Entries({
         admin: { label: "ADM", dotColor: "bg-gray-500" },
     };
 
+    const formatDate = (dateStr: string) => {
+        const [year, month, day] = dateStr.split("-");
+        return `${day}-${month}-${year}`;
+    };
+
     return (
         <div className="flex flex-col w-full max-w-5xl mx-auto py-10 px-4 md:px-6 pb-24 md:pb-16">
             {entries.map((entry, index) => {
@@ -69,7 +74,7 @@ export default function Entries({
                     label: "???",
                     dotColor: "bg-white",
                 };
-
+                const formattedDate = formatDate(entry.event_date);
                 return (
                     <div
                         key={entry.id}
@@ -78,7 +83,7 @@ export default function Entries({
                         {/* --- LEFT: Date & Km --- */}
                         <div className="w-20 md:w-32 pt-1 text-right shrink-0">
                             <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
-                                {entry.event_date}
+                                {formattedDate}
                             </div>
                             <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
                                 {entry.kileage.toLocaleString()} km
