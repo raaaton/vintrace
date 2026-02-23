@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Lexend } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Link from "next/link";
@@ -10,9 +10,10 @@ import { Toaster } from "sonner";
 import Image from "next/image";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({
+const lexend = Lexend({
     subsets: ["latin"],
     display: "swap",
+    variable: "--font-lexend",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +38,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="fr" className="dark" suppressHydrationWarning>
-            <body className={`${inter.className} antialiased`}>
+            <body
+                className={`${lexend.variable} ${lexend.className} antialiased`}
+            >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

@@ -141,7 +141,7 @@ export default async function VehiclePage({
 
                         <div className="flex items-center gap-4">
                             <div className="flex flex-col items-end leading-none">
-                                <span className="hidden md:inline text-xs uppercase font-semibold tracking-wider text-muted-foreground">
+                                <span className="hidden md:inline text-xs uppercase font-light tracking-wider text-muted-foreground">
                                     5 Entrées
                                 </span>
                             </div>
