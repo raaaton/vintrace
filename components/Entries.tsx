@@ -52,7 +52,7 @@ export default function Entries({
             cost: 0.0,
             event_date: "2025-02-10",
         },
-    ];
+    ].filter((entry) => entry.type === filter || filter === "all");
 
     // Type Configuration: Label & Dot Color based on Entry Type
     const typeConfig: Record<string, { label: string; dotColor: string }> = {
