@@ -11,10 +11,7 @@ function Tabs({
     return (
         <TabsPrimitive.Root
             data-slot="tabs"
-            className={cn(
-                "flex flex-col gap-4 w-full",
-                className
-            )}
+            className={cn("flex flex-col gap-4 w-full", className)}
             {...props}
         />
     );
@@ -30,7 +27,7 @@ function TabsList({
             className={cn(
                 "inline-flex items-center justify-start bg-stone-900/25 border border-stone-700/75 p-1",
                 "w-fit max-w-full overflow-x-auto overflow-y-hidden scrollbar-hide",
-                className
+                className,
             )}
             {...props}
         />
@@ -46,10 +43,10 @@ function TabsTrigger({
             data-slot="tabs-trigger"
             className={cn(
                 "inline-flex items-center justify-center whitespace-nowrap px-3 md:px-4 py-2.5 text-[10px] md:text-xs font-semibold uppercase tracking-widest transition-all outline-none",
-                "text-muted-foreground hover:text-foreground/80",
+                "text-muted-foreground hover:text-foreground/80 hover:bg-white/10",
                 "data-[state=active]:bg-white data-[state=active]:text-black",
                 "flex-shrink-0",
-                className
+                className,
             )}
             {...props}
         />

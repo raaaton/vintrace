@@ -10,6 +10,29 @@ import {
 } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Entries from "@/components/Entries";
+import { Metadata } from "next";
+
+type GenerateMetadataProps = {
+    params: Promise<{ vehicleSlug: string }>;
+};
+
+export async function generateMetadata({
+    params,
+}: GenerateMetadataProps): Promise<Metadata> {
+    const { vehicleSlug } = await params;
+
+    const supabase = await createClient();
+
+    const { data } = await supabase
+        .from("vehicles")
+        .select("make, model")
+        .eq("slug", vehicleSlug)
+        .single();
+
+    return {
+        title: `${data?.model || "Véhicule inconnu"} | VinTrace`,
+    };
+}
 
 export default async function VehiclePage({
     params,
@@ -147,12 +170,19 @@ export default async function VehiclePage({
                             </div>
 
                             {/* Responsive 'Add' Buttons: Inline on Desktop, FAB on Mobile */}
-                            <button className="hidden md:flex items-center gap-2 px-3 py-2 lg:px-4 lg:py-3 text-primary-foreground bg-primary hover:bg-primary/90 uppercase text-xs font-semibold transition-colors ease-out">
-                                <Plus size={16} strokeWidth={2.5} />
-                                <span className="hidden md:inline">
-                                    Ajouter
-                                </span>
-                            </button>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <button className="hidden md:flex items-center gap-2 px-3 py-2 lg:px-4 lg:py-3 text-primary-foreground bg-primary hover:bg-primary/90 uppercase text-xs font-semibold transition-colors ease-out">
+                                        <Plus size={16} strokeWidth={2.5} />
+                                        <span className="hidden md:inline">
+                                            Ajouter
+                                        </span>
+                                    </button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>En construction 🚧</p>
+                                </TooltipContent>
+                            </Tooltip>
                             <button
                                 className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
                                 aria-label="Ajouter une entrée"
