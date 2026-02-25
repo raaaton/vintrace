@@ -75,13 +75,19 @@
 }
 
 @layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* Smooth scrolling */
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Disables native focus outline on Dialog content */
@@ -123,10 +129,10 @@
 
 /* Force le premier trigger à paraître actif au chargement initial */
 [data-radix-collection-item]:first-child {
-  color: black !important;
+    color: black !important;
 }
 
 /* Redonne le contrôle à Radix dès qu'il se réveille */
 [data-state="inactive"]:first-child {
-  color: rgb(161 161 170) !important; /* la couleur grise habituelle */
+    color: rgb(161 161 170) !important; /* la couleur grise habituelle */
 }

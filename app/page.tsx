@@ -1,10 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, History, Car, LineChart, ShieldCheck, Camera, SquareCheck } from "lucide-react";
+import {
+    ArrowRight,
+    Check,
+    History,
+    Car,
+    LineChart,
+    ShieldCheck,
+    Camera,
+    SquareCheck,
+} from "lucide-react";
 
 export const metadata: Metadata = {
     title: "VinTrace | Le Digital Twin de votre passion automobile",
-    description: "Transformez vos factures en une timeline interactive. Sécurisez la valeur de votre véhicule pour la revente.",
+    description:
+        "Transformez vos factures en une timeline interactive. Sécurisez la valeur de votre véhicule pour la revente.",
 };
 
 export default function Home() {
@@ -26,25 +36,33 @@ export default function Home() {
                         </span>
                         Le carnet d'entretien numérique 2.0
                     </div>
-                    
+
                     <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-bold tracking-tight text-foreground mb-8 max-w-4xl flex flex-col items-center">
                         <span>Le Digital Twin de votre</span>
-                        <span className="font-hand text-6xl md:text-[5.5rem] lg:text-[7.5rem] mt-2 text-primary font-normal opacity-90 inline-block">passion automobile</span>
+                        <span className="font-hand text-6xl md:text-[5.5rem] lg:text-[7.5rem] mt-2 text-primary font-normal opacity-90 inline-block">
+                            passion automobile
+                        </span>
                     </h1>
-                    
+
                     <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl font-light leading-relaxed">
-                        Transformez vos factures papier en une Timeline interactive. Rassurez les acheteurs et <b className="text-foreground font-normal">sécurisez la valeur de votre investissement</b> lors de la revente.
+                        Transformez vos factures papier en une Timeline
+                        interactive. Rassurez les acheteurs et{" "}
+                        <b className="text-foreground font-normal">
+                            sécurisez la valeur de votre investissement
+                        </b>{" "}
+                        lors de la revente.
                     </p>
-                    
+
                     <div className="flex flex-col sm:flex-row gap-6 items-center w-full justify-center sm:w-auto">
-                        <Link 
-                            href="/login" 
+                        <Link
+                            href="/register"
                             className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02] transition-all duration-300 px-8 py-4 flex flex-1 sm:flex-initial items-center justify-center gap-2 font-medium shadow-[0_0_30px_-5px_hsl(var(--primary)_/_40%)]"
                         >
-                            Créer mon Garage Virtuel <ArrowRight className="w-5 h-5 ml-1" />
+                            Créer mon Garage Virtuel{" "}
+                            <ArrowRight className="w-5 h-5 ml-1" />
                         </Link>
-                        <Link 
-                            href="#features" 
+                        <Link
+                            href="#features"
                             className="w-full sm:w-auto bg-stone-900/50 hover:bg-stone-800 text-foreground border border-stone-700/75 hover:border-stone-500 transition-all duration-300 px-8 py-4 flex flex-1 sm:flex-initial justify-center items-center gap-2 font-light"
                         >
                             Découvrir les fonctionnalités
@@ -56,10 +74,19 @@ export default function Home() {
                 <section className="py-24 border-t border-stone-800/50">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-150 fill-mode-both">
-                            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">La valeur d'une voiture de collection dépend à <br/><span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">50% de son historique</span></h2>
+                            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                                La valeur d'une voiture de collection dépend à{" "}
+                                <br />
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">
+                                    50% de son historique
+                                </span>
+                            </h2>
                             <p className="text-lg text-muted-foreground mb-8 font-light leading-relaxed">
-                                Actuellement, cet historique prend la forme d'un tas de factures papier en vrac ou d'un fichier Excel basique.
-                                Cette opacité ne rassure pas l'acheteur et fait perdre de la valeur à la vente.
+                                Actuellement, cet historique prend la forme d'un
+                                tas de factures papier en vrac ou d'un fichier
+                                Excel basique. Cette opacité ne rassure pas
+                                l'acheteur et fait perdre de la valeur à la
+                                vente.
                             </p>
                             <ul className="space-y-4">
                                 {[
@@ -67,9 +94,14 @@ export default function Home() {
                                     "Centralisation numérique de toutes vos factures",
                                     "Suivi précis de l'investissement total",
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-4 text-stone-200">
+                                    <li
+                                        key={i}
+                                        className="flex items-center gap-4 text-stone-200"
+                                    >
                                         <SquareCheck className="w-5 h-5 text-primary shrink-0" />
-                                        <span className="font-light tracking-wide">{item}</span>
+                                        <span className="font-light tracking-wide">
+                                            {item}
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
@@ -77,33 +109,61 @@ export default function Home() {
                         <div className="grid grid-cols-2 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-8 duration-1000 delay-300 fill-mode-both">
                             <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800 p-6 flex flex-col gap-4 hover:border-stone-600 transition-colors group h-full">
                                 <History className="w-8 h-8 text-stone-400 group-hover:text-primary transition-colors" />
-                                <h3 className="font-medium text-lg tracking-wide text-stone-100">Timeline Visuelle</h3>
-                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">De l'achat aux restaurations, visualisez votre historique chronologiquement.</p>
+                                <h3 className="font-medium text-lg tracking-wide text-stone-100">
+                                    Timeline Visuelle
+                                </h3>
+                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">
+                                    De l'achat aux restaurations, visualisez
+                                    votre historique chronologiquement.
+                                </p>
                             </div>
                             <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800 p-6 flex flex-col gap-4 hover:border-stone-600 transition-colors group h-full">
                                 <ShieldCheck className="w-8 h-8 text-stone-400 group-hover:text-primary transition-colors" />
-                                <h3 className="font-medium text-lg tracking-wide text-stone-100">Preuve Ultime</h3>
-                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">Associez vos PDF, factures et photos irréfutables à chaque étape.</p>
+                                <h3 className="font-medium text-lg tracking-wide text-stone-100">
+                                    Preuve Ultime
+                                </h3>
+                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">
+                                    Associez vos PDF, factures et photos
+                                    irréfutables à chaque étape.
+                                </p>
                             </div>
                             <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800 p-6 flex flex-col gap-4 hover:border-stone-600 transition-colors group h-full">
                                 <Camera className="w-8 h-8 text-stone-400 group-hover:text-primary transition-colors" />
-                                <h3 className="font-medium text-lg tracking-wide text-stone-100">Showroom</h3>
-                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">Partagez une URL vitrine qui fait rêver l'acheteur, en toute confidentialité.</p>
+                                <h3 className="font-medium text-lg tracking-wide text-stone-100">
+                                    Showroom
+                                </h3>
+                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">
+                                    Partagez une URL vitrine qui fait rêver
+                                    l'acheteur, en toute confidentialité.
+                                </p>
                             </div>
                             <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800 p-6 flex flex-col gap-4 hover:border-stone-600 transition-colors group h-full">
                                 <LineChart className="w-8 h-8 text-stone-400 group-hover:text-primary transition-colors" />
-                                <h3 className="font-medium text-lg tracking-wide text-stone-100">Tracking</h3>
-                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">Suivez votre investissement global d'un simple coup d'œil.</p>
+                                <h3 className="font-medium text-lg tracking-wide text-stone-100">
+                                    Tracking
+                                </h3>
+                                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">
+                                    Suivez votre investissement global d'un
+                                    simple coup d'œil.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Features Deep Dive */}
-                <section id="features" className="py-24 border-t border-stone-800/50">
+                <section
+                    id="features"
+                    className="py-24 border-t border-stone-800/50"
+                >
                     <div className="text-center mb-24">
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Fonctionnalités Clés</h2>
-                        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">Tout ce dont vous avez besoin pour gérer, documenter et prouver la valeur de vos véhicules d'exception.</p>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                            Fonctionnalités Clés
+                        </h2>
+                        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                            Tout ce dont vous avez besoin pour gérer, documenter
+                            et prouver la valeur de vos véhicules d'exception.
+                        </p>
                     </div>
 
                     <div className="space-y-32">
@@ -125,13 +185,25 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="order-1 lg:order-2">
-                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">Interface Épurée</div>
-                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">Le Garage Virtuel</h3>
+                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">
+                                    Interface Épurée
+                                </div>
+                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">
+                                    Le Garage Virtuel
+                                </h3>
                                 <p className="text-muted-foreground font-light mb-8 text-lg leading-relaxed">
-                                    Une vue globale sur votre collection. Ajoutez vos véhicules avec leurs informations fondamentales : Année, VIN, Kilométrage initial, et une magnifique photo de couverture.
+                                    Une vue globale sur votre collection.
+                                    Ajoutez vos véhicules avec leurs
+                                    informations fondamentales : Année, VIN,
+                                    Kilométrage initial, et une magnifique photo
+                                    de couverture.
                                 </p>
-                                <Link href="/login" className="inline-flex items-center gap-2 text-stone-200 hover:text-primary transition-colors font-medium border-b border-transparent hover:border-primary pb-1">
-                                    Démarrer <ArrowRight className="w-4 h-4 ml-1" />
+                                <Link
+                                    href="/register"
+                                    className="inline-flex items-center gap-2 text-stone-200 hover:text-primary transition-colors font-medium border-b border-transparent hover:border-primary pb-1"
+                                >
+                                    Démarrer{" "}
+                                    <ArrowRight className="w-4 h-4 ml-1" />
                                 </Link>
                             </div>
                         </div>
@@ -139,23 +211,40 @@ export default function Home() {
                         {/* 2nd Feature */}
                         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center group">
                             <div>
-                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">Cœur du Système</div>
-                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">La Timeline d'Entretien</h3>
+                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">
+                                    Cœur du Système
+                                </div>
+                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">
+                                    La Timeline d'Entretien
+                                </h3>
                                 <p className="text-muted-foreground font-light mb-8 text-lg leading-relaxed">
-                                    Dites adieu aux dossiers désordonnés. Ajoutez des événements chronologiques classés par type avec photos et justificatifs PDF pour construire l'historique irréfutable de votre automobile.
+                                    Dites adieu aux dossiers désordonnés.
+                                    Ajoutez des événements chronologiques
+                                    classés par type avec photos et
+                                    justificatifs PDF pour construire
+                                    l'historique irréfutable de votre
+                                    automobile.
                                 </p>
                                 <ul className="space-y-4 mb-6">
-                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors"><SquareCheck className="w-5 h-5 text-primary shrink-0" /> Entretien (Vidanges, Freins)</li>
-                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors"><SquareCheck className="w-5 h-5 text-primary shrink-0" /> Modifications & Restaurations</li>
-                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors"><SquareCheck className="w-5 h-5 text-primary shrink-0" /> Administratif (Contrôle Technique)</li>
+                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors">
+                                        <SquareCheck className="w-5 h-5 text-primary shrink-0" />{" "}
+                                        Entretien (Vidanges, Freins)
+                                    </li>
+                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors">
+                                        <SquareCheck className="w-5 h-5 text-primary shrink-0" />{" "}
+                                        Modifications & Restaurations
+                                    </li>
+                                    <li className="flex items-center gap-4 text-stone-300 font-light border border-stone-800/50 p-4 bg-stone-900/20 hover:border-stone-600 transition-colors">
+                                        <SquareCheck className="w-5 h-5 text-primary shrink-0" />{" "}
+                                        Administratif (Contrôle Technique)
+                                    </li>
                                 </ul>
                             </div>
                             <div className="relative aspect-[4/3] bg-stone-950/50 border border-stone-800 hover:border-stone-600 transition-all duration-500 flex items-center p-4 sm:p-8 overflow-hidden group">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-50 z-0 pointer-events-none"></div>
                                 <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-stone-950/90 to-transparent z-20 pointer-events-none"></div>
-                                
+
                                 <div className="relative z-10 flex flex-col w-full gap-6 opacity-70 group-hover:opacity-100 transition-all duration-700 ease-out transform group-hover:-translate-y-4">
-                                    
                                     {/* Entry 1 */}
                                     <div className="relative flex gap-4 md:gap-6 transform transition-transform duration-500 group-hover:translate-x-2">
                                         <div className="w-16 md:w-20 pt-2 text-right shrink-0">
@@ -179,7 +268,10 @@ export default function Home() {
                                     </div>
 
                                     {/* Entry 2 */}
-                                    <div className="relative flex gap-4 md:gap-6 transform transition-transform duration-500 group-hover:translate-x-2" style={{ transitionDelay: '100ms' }}>
+                                    <div
+                                        className="relative flex gap-4 md:gap-6 transform transition-transform duration-500 group-hover:translate-x-2"
+                                        style={{ transitionDelay: "100ms" }}
+                                    >
                                         <div className="w-16 md:w-20 pt-2 text-right shrink-0">
                                             <div className="h-2 w-5/6 bg-stone-800/60 mb-2 rounded-sm ml-auto"></div>
                                             <div className="h-1.5 w-1/2 bg-stone-800/40 rounded-sm ml-auto"></div>
@@ -209,7 +301,10 @@ export default function Home() {
                                     </div>
 
                                     {/* Entry 3 */}
-                                    <div className="relative flex gap-4 md:gap-6 transform transition-transform duration-500 group-hover:translate-x-2" style={{ transitionDelay: '200ms' }}>
+                                    <div
+                                        className="relative flex gap-4 md:gap-6 transform transition-transform duration-500 group-hover:translate-x-2"
+                                        style={{ transitionDelay: "200ms" }}
+                                    >
                                         <div className="w-16 md:w-20 pt-2 text-right shrink-0">
                                             <div className="h-2 w-3/4 bg-stone-800/60 mb-2 rounded-sm ml-auto"></div>
                                             <div className="h-1.5 w-2/3 bg-stone-800/40 rounded-sm ml-auto"></div>
@@ -228,7 +323,6 @@ export default function Home() {
                                             <div className="h-2 w-2/3 bg-stone-800/60 rounded-sm"></div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -239,8 +333,12 @@ export default function Home() {
                                 <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-primary/10 to-transparent"></div>
                                 <div className="relative z-10 w-[85%] h-full border-t border-x border-stone-700/50 bg-stone-900/90 backdrop-blur-md shadow-2xl p-6 flex flex-col translate-y-12 group-hover:translate-y-4 transition-transform duration-700 ease-out">
                                     <div className="flex justify-between items-center mb-6 border-b border-stone-800/80 pb-4">
-                                        <div className="font-mono text-xs text-stone-500 truncate flex-1 pr-4">vintrace.fr/showroom/porsche-911</div>
-                                        <div className="px-2.5 py-1 bg-primary/10 text-primary text-[10px] uppercase font-bold tracking-widest border border-primary/20 shrink-0 shadow-[0_0_10px_rgba(255,183,0,0.1)]">Vue Publique</div>
+                                        <div className="font-mono text-xs text-stone-500 truncate flex-1 pr-4">
+                                            vintrace.fr/showroom/porsche-911
+                                        </div>
+                                        <div className="px-2.5 py-1 bg-primary/10 text-primary text-[10px] uppercase font-bold tracking-widest border border-primary/20 shrink-0 shadow-[0_0_10px_rgba(255,183,0,0.1)]">
+                                            Vue Publique
+                                        </div>
                                     </div>
                                     <div className="w-full h-36 bg-stone-800/40 mb-6 rounded-sm border border-stone-800"></div>
                                     <div className="h-6 w-1/2 bg-stone-800/60 mb-5 rounded-sm"></div>
@@ -251,13 +349,24 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="order-1 lg:order-2">
-                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">L'Atout Majeur</div>
-                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">Le Showroom Public</h3>
+                                <div className="text-primary font-mono text-sm tracking-widest mb-3 uppercase">
+                                    L'Atout Majeur
+                                </div>
+                                <h3 className="text-3xl lg:text-4xl font-semibold mb-6 tracking-tight text-foreground">
+                                    Le Showroom Public
+                                </h3>
                                 <p className="text-muted-foreground font-light mb-6 text-lg leading-relaxed">
-                                    Générez une URL unique pour votre véhicule. Affichez votre voiture et sa timeline de manière élégante aux acheteurs potentiels, prouvant ainsi la rigueur de votre entretien et justifiant sa valeur.
+                                    Générez une URL unique pour votre véhicule.
+                                    Affichez votre voiture et sa timeline de
+                                    manière élégante aux acheteurs potentiels,
+                                    prouvant ainsi la rigueur de votre entretien
+                                    et justifiant sa valeur.
                                 </p>
                                 <div className="p-4 bg-stone-900/30 border-l-2 border-primary/50 text-stone-400 font-light text-sm italic leading-relaxed">
-                                    Sécurité incluse : floutage automatique des données sensibles (adresse, nom complet) sur la vue publique pour garantir votre confidentialité absolue.
+                                    Sécurité incluse : floutage automatique des
+                                    données sensibles (adresse, nom complet) sur
+                                    la vue publique pour garantir votre
+                                    confidentialité absolue.
                                 </div>
                             </div>
                         </div>
@@ -265,29 +374,63 @@ export default function Home() {
                 </section>
 
                 {/* Pricing Section */}
-                <section id="pricing" className="py-24 border-t border-stone-800/50 relative">
+                <section
+                    id="pricing"
+                    className="py-24 border-t border-stone-800/50 relative"
+                >
                     <div className="absolute left-1/2 -translate-x-1/2 top-40 w-[800px] h-[500px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
-                    
+
                     <div className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Tarifs</h2>
-                        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light">Des offres claires et adaptées à votre <span className="font-hand text-4xl text-primary font-medium tracking-normal inline-block ml-1">passion</span></p>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                            Tarifs
+                        </h2>
+                        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light">
+                            Des offres claires et adaptées à votre{" "}
+                            <span className="font-hand text-4xl text-primary font-medium tracking-normal inline-block ml-1">
+                                passion
+                            </span>
+                        </p>
                     </div>
 
                     <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                         {/* Free */}
                         <div className="bg-stone-950/40 backdrop-blur-sm border border-stone-800 p-8 hover:border-stone-700 transition-colors flex flex-col group">
-                            <h3 className="text-xl font-medium mb-3 text-stone-200">Testeur</h3>
+                            <h3 className="text-xl font-medium mb-3 text-stone-200">
+                                Testeur
+                            </h3>
                             <div className="mb-6 flex items-baseline gap-1">
-                                <span className="text-5xl font-bold tracking-tighter text-foreground">0€</span>
+                                <span className="text-5xl font-bold tracking-tighter text-foreground">
+                                    0€
+                                </span>
                             </div>
-                            <p className="text-stone-400 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/50 pb-16">L'offre idéale pour tester le carnet digital et visualiser l'interface sur un premier véhicule.</p>
+                            <p className="text-stone-400 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/50 pb-16">
+                                L'offre idéale pour tester le carnet digital et
+                                visualiser l'interface sur un premier véhicule.
+                            </p>
                             <ul className="space-y-5 mb-10 flex-1">
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-stone-500 shrink-0" /> <span>1 Véhicule dans votre garage</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-stone-500 shrink-0" /> <span>Limite de 5 événements (factures)</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-500 font-light line-through opacity-50"><Check className="w-5 h-5 shrink-0" /> <span>Page Showroom Publique</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-500 font-light line-through opacity-50"><Check className="w-5 h-5 shrink-0" /> <span>Export PDF complet</span></li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-stone-500 shrink-0" />{" "}
+                                    <span>1 Véhicule dans votre garage</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-stone-500 shrink-0" />{" "}
+                                    <span>
+                                        Limite de 5 événements (factures)
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-500 font-light line-through opacity-50">
+                                    <Check className="w-5 h-5 shrink-0" />{" "}
+                                    <span>Page Showroom Publique</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-500 font-light line-through opacity-50">
+                                    <Check className="w-5 h-5 shrink-0" />{" "}
+                                    <span>Export PDF complet</span>
+                                </li>
                             </ul>
-                            <Link href="/login" className="w-full text-center border border-stone-700 hover:border-stone-500 hover:bg-stone-800 text-stone-200 py-4 font-medium transition-colors tracking-wide">
+                            <Link
+                                href="/register"
+                                className="w-full text-center border border-stone-700 hover:border-stone-500 hover:bg-stone-800 text-stone-200 py-4 font-medium transition-colors tracking-wide"
+                            >
                                 Tester gratuitement
                             </Link>
                         </div>
@@ -298,38 +441,93 @@ export default function Home() {
                             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 text-[10px] font-bold uppercase tracking-widest shadow-md">
                                 Recommandé
                             </div>
-                            <h3 className="text-xl font-medium mb-3 text-primary mt-2">Passionné</h3>
+                            <h3 className="text-xl font-medium mb-3 text-primary mt-2">
+                                Passionné
+                            </h3>
                             <div className="mb-6 flex items-baseline gap-1">
-                                <span className="text-5xl font-bold tracking-tighter text-foreground">80€</span>
-                                <span className="text-stone-500 font-light">/an</span>
+                                <span className="text-5xl font-bold tracking-tighter text-foreground">
+                                    80€
+                                </span>
+                                <span className="text-stone-500 font-light">
+                                    /an
+                                </span>
                             </div>
-                            <p className="text-stone-300 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/80 pb-16">La solution complète pour valoriser un petit garage et créer la confiance à la revente.</p>
+                            <p className="text-stone-300 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/80 pb-16">
+                                La solution complète pour valoriser un petit
+                                garage et créer la confiance à la revente.
+                            </p>
                             <ul className="space-y-5 mb-10 flex-1">
-                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium"><Check className="w-5 h-5 text-primary shrink-0" /> <span>Jusqu'à 2 véhicules</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium"><Check className="w-5 h-5 text-primary shrink-0" /> <span>Événements & Factures illimités</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium"><Check className="w-5 h-5 text-primary shrink-0" /> <span className="pb-0.5">Showroom Public inclus</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium"><Check className="w-5 h-5 text-primary shrink-0" /> <span>Export PDF Professionnel</span></li>
+                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium">
+                                    <Check className="w-5 h-5 text-primary shrink-0" />{" "}
+                                    <span>Jusqu'à 2 véhicules</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium">
+                                    <Check className="w-5 h-5 text-primary shrink-0" />{" "}
+                                    <span>Événements & Factures illimités</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium">
+                                    <Check className="w-5 h-5 text-primary shrink-0" />{" "}
+                                    <span className="pb-0.5">
+                                        Showroom Public inclus
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-100 font-medium">
+                                    <Check className="w-5 h-5 text-primary shrink-0" />{" "}
+                                    <span>Export PDF Professionnel</span>
+                                </li>
                             </ul>
-                            <Link href="/login" className="w-full text-center bg-primary text-primary-foreground hover:bg-primary/90 py-4 font-medium transition-colors tracking-wide shadow-[0_0_20px_rgba(255,183,0,0.2)]">
+                            <Link
+                                href="/register"
+                                className="w-full text-center bg-primary text-primary-foreground hover:bg-primary/90 py-4 font-medium transition-colors tracking-wide shadow-[0_0_20px_rgba(255,183,0,0.2)]"
+                            >
                                 Choisir Passionné
                             </Link>
                         </div>
 
                         {/* Collectionneur */}
                         <div className="bg-stone-950/40 backdrop-blur-sm border border-stone-800 p-8 hover:border-stone-700 transition-colors flex flex-col group">
-                            <h3 className="text-xl font-medium mb-3 text-stone-200">Collectionneur</h3>
+                            <h3 className="text-xl font-medium mb-3 text-stone-200">
+                                Collectionneur
+                            </h3>
                             <div className="mb-6 flex items-baseline gap-1">
-                                <span className="text-5xl font-bold tracking-tighter text-foreground">200€</span>
-                                <span className="text-stone-500 font-light">/an</span>
+                                <span className="text-5xl font-bold tracking-tighter text-foreground">
+                                    200€
+                                </span>
+                                <span className="text-stone-500 font-light">
+                                    /an
+                                </span>
                             </div>
-                            <p className="text-stone-400 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/50 pb-16">Pour les passionnés avec une flotte importante qui nécessite une gestion experte.</p>
+                            <p className="text-stone-400 font-light text-sm mb-8 h-10 leading-relaxed border-b border-stone-800/50 pb-16">
+                                Pour les passionnés avec une flotte importante
+                                qui nécessite une gestion experte.
+                            </p>
                             <ul className="space-y-5 mb-10 flex-1">
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-primary/70 shrink-0" /> <span>Jusqu'à 10 véhicules</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-primary/70 shrink-0" /> <span>Tout l'illimité du plan Passionné</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-primary/70 shrink-0" /> <span>Support prioritaire</span></li>
-                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light"><Check className="w-5 h-5 text-primary/70 shrink-0" /> <span>Nouvelles fonctionnalités en avant-première</span></li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-primary/70 shrink-0" />{" "}
+                                    <span>Jusqu'à 10 véhicules</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-primary/70 shrink-0" />{" "}
+                                    <span>
+                                        Tout l'illimité du plan Passionné
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-primary/70 shrink-0" />{" "}
+                                    <span>Support prioritaire</span>
+                                </li>
+                                <li className="flex items-start gap-4 text-sm text-stone-300 font-light">
+                                    <Check className="w-5 h-5 text-primary/70 shrink-0" />{" "}
+                                    <span>
+                                        Nouvelles fonctionnalités en
+                                        avant-première
+                                    </span>
+                                </li>
                             </ul>
-                            <Link href="/login" className="w-full text-center border border-stone-700 hover:border-stone-500 hover:bg-stone-800 text-stone-200 py-4 font-medium transition-colors tracking-wide">
+                            <Link
+                                href="/register"
+                                className="w-full text-center border border-stone-700 hover:border-stone-500 hover:bg-stone-800 text-stone-200 py-4 font-medium transition-colors tracking-wide"
+                            >
                                 Choisir Collectionneur
                             </Link>
                         </div>
@@ -338,12 +536,16 @@ export default function Home() {
 
                 {/* Final CTA */}
                 <section className="py-24 md:py-32 border-t border-stone-800/50 text-center relative overflow-hidden">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight">Prêt à valoriser votre patrimoine ?</h2>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight">
+                        Prêt à valoriser votre patrimoine ?
+                    </h2>
                     <p className="text-xl text-muted-foreground font-light mb-12 max-w-3xl mx-auto leading-relaxed">
-                        Rejoignez les passionnés qui ont déjà transformé l'histoire de leurs véhicules en une timeline numérique irréfuta.
+                        Rejoignez les passionnés qui ont déjà transformé
+                        l'histoire de leurs véhicules en une timeline numérique
+                        irréfutable.
                     </p>
-                    <Link 
-                        href="/login" 
+                    <Link
+                        href="/register"
                         className="inline-flex items-center justify-center bg-foreground text-background hover:bg-stone-300 hover:scale-[1.02] transition-all duration-300 px-10 py-5 font-semibold text-lg tracking-wide group"
                     >
                         Créer mon compte
