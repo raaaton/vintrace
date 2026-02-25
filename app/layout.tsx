@@ -39,14 +39,14 @@ export const metadata: Metadata = {
         images: [
             {
                 url: "/images/logo.png",
-                width: 1200,
-                height: 630,
+                width: 500,
+                height: 500,
                 alt: "VinTrace Logo",
             }
         ],
     },
     twitter: {
-        card: "summary_large_image",
+        card: "summary",
         title: "VinTrace",
         description:
             "Valorisez votre véhicule avec une timeline d'entretien interactive. Archivez vos factures, documentez vos restaurations et sécurisez la revente de votre voiture de collection.",
