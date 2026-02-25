@@ -1,4 +1,4 @@
-import { Lexend } from "next/font/google";
+import { Lexend, Pinyon_Script } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Link from "next/link";
@@ -16,6 +16,13 @@ const lexend = Lexend({
     variable: "--font-lexend",
 });
 
+const pinyonScript = Pinyon_Script({
+    weight: "400",
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-hand",
+});
+
 export const metadata: Metadata = {
     title: "VinTrace",
     description:
@@ -25,7 +32,7 @@ export const metadata: Metadata = {
         description:
             "Valorisez votre véhicule avec une timeline d'entretien interactive. Archivez vos factures, documentez vos restaurations et sécurisez la revente de votre voiture de collection.",
         siteName: "VinTrace",
-        url: "https://vin-trace.vercel.app",
+        url: "https://vintrace.vercel.app",
         type: "website",
         locale: "fr_FR",
     },
@@ -39,7 +46,7 @@ export default function RootLayout({
     return (
         <html lang="fr" className="dark" suppressHydrationWarning>
             <body
-                className={`${lexend.variable} ${lexend.className} antialiased`}
+                className={`${lexend.variable} ${pinyonScript.variable} ${lexend.className} antialiased`}
             >
                 <ThemeProvider
                     attribute="class"
