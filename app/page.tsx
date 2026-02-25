@@ -4,7 +4,6 @@ import {
     ArrowRight,
     Check,
     History,
-    Car,
     LineChart,
     ShieldCheck,
     Camera,
@@ -76,9 +75,12 @@ export default function Home() {
                         <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-150 fill-mode-both">
                             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
                                 La valeur d'une voiture de collection dépend à{" "}
-                                <br />
                                 <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">
-                                    50% de son historique
+                                    50%
+                                </span>{" "}
+                                de son{" "}
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">
+                                    historique
                                 </span>
                             </h2>
                             <p className="text-lg text-muted-foreground mb-8 font-light leading-relaxed">
@@ -396,7 +398,7 @@ export default function Home() {
                         {/* Free */}
                         <div className="bg-stone-950/40 backdrop-blur-sm border border-stone-800 p-8 hover:border-stone-700 transition-colors flex flex-col group">
                             <h3 className="text-xl font-medium mb-3 text-stone-200">
-                                Testeur
+                                Amateur
                             </h3>
                             <div className="mb-6 flex items-baseline gap-1">
                                 <span className="text-5xl font-bold tracking-tighter text-foreground">
@@ -541,8 +543,11 @@ export default function Home() {
                     </h2>
                     <p className="text-xl text-muted-foreground font-light mb-12 max-w-3xl mx-auto leading-relaxed">
                         Rejoignez les passionnés qui ont déjà transformé
-                        l'histoire de leurs véhicules en une timeline numérique
-                        irréfutable.
+                        l'histoire de leurs véhicules en une timeline numérique{" "}
+                        <b className="text-foreground font-normal">
+                            irréfutable
+                        </b>
+                        .
                     </p>
                     <Link
                         href="/register"
