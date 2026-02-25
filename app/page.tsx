@@ -75,11 +75,11 @@ export default function Home() {
                         <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-150 fill-mode-both">
                             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
                                 La valeur d'une voiture de collection dépend à{" "}
-                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3">
                                     50%
                                 </span>{" "}
                                 de son{" "}
-                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-medium inline-block mt-3">
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3">
                                     historique
                                 </span>
                             </h2>
@@ -388,7 +388,7 @@ export default function Home() {
                         </h2>
                         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light">
                             Des offres claires et adaptées à votre{" "}
-                            <span className="font-hand text-4xl text-primary font-medium tracking-normal inline-block ml-1">
+                            <span className="font-hand text-4xl text-primary font-normal tracking-normal inline-block ml-1">
                                 passion
                             </span>
                         </p>

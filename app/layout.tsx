@@ -1,4 +1,5 @@
-import { Lexend, Pinyon_Script } from "next/font/google";
+import { Lexend } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Link from "next/link";
@@ -16,9 +17,8 @@ const lexend = Lexend({
     variable: "--font-lexend",
 });
 
-const pinyonScript = Pinyon_Script({
-    weight: "400",
-    subsets: ["latin"],
+const priestacy = localFont({
+    src: "../public/fonts/Priestacy.otf", 
     display: "swap",
     variable: "--font-hand",
 });
@@ -62,7 +62,7 @@ export default function RootLayout({
     return (
         <html lang="fr" className="dark" suppressHydrationWarning>
             <body
-                className={`${lexend.variable} ${pinyonScript.variable} ${lexend.className} antialiased`}
+                className={`${lexend.variable} ${priestacy.variable} ${lexend.className} antialiased`}
             >
                 <ThemeProvider
                     attribute="class"
