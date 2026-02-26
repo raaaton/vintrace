@@ -36,9 +36,9 @@ export default function Home() {
                         Le carnet d'entretien numérique 2.0
                     </div>
 
-                    <h1 className="text-3xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-bold tracking-tight text-foreground mb-8 max-w-4xl flex flex-col items-center">
+                    <h1 className="text-3xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-bold tracking-tight text-foreground mb-8 max-w-4xl flex flex-col items-center select-none">
                         <span>Le Digital Twin de votre</span>
-                        <span className="font-hand text-5xl md:text-[5.5rem] lg:text-[7.5rem] mt-2 text-primary font-normal opacity-90 inline-block">
+                        <span className="font-hand text-5xl md:text-[5.5rem] lg:text-[7.5rem] mt-2 text-primary font-normal opacity-90 inline-block select-none">
                             passion automobile
                         </span>
                     </h1>
@@ -73,13 +73,13 @@ export default function Home() {
                 <section className="py-24 border-t border-stone-800/50">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-150 fill-mode-both">
-                            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight select-none">
                                 La valeur d'une voiture de collection dépend à{" "}
-                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3">
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3 select-none">
                                     50%
                                 </span>{" "}
                                 de son{" "}
-                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3">
+                                <span className="font-hand text-5xl md:text-6xl text-primary tracking-normal font-normal inline-block mt-3 select-none">
                                     historique
                                 </span>
                             </h2>
@@ -380,8 +380,6 @@ export default function Home() {
                     id="pricing"
                     className="py-24 border-t border-stone-800/50 relative"
                 >
-
-
                     <div className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
                             Tarifs
