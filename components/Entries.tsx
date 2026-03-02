@@ -118,7 +118,7 @@ export default function Entries({
                                 </div>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
-                                <div className="flex sm:flex-col items-center justify-start gap-2 sm:gap-3 min-w-0">
+                                <div className="flex flex-row items-center justify-start gap-2 sm:gap-3 min-w-0">
                                     <Badge
                                         variant="outline"
                                         className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground shrink-0"
