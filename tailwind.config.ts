@@ -64,6 +64,9 @@ export default {
             fontFamily: {
                 hand: ["var(--font-hand)", "cursive"],
             },
+            screens: {
+                xs: "400px",
+            },
         },
     },
     plugins: [

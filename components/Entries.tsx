@@ -74,23 +74,26 @@ export default function Entries({
                     label: "???",
                     dotColor: "bg-white",
                 };
+
                 const formattedDate = formatDate(entry.event_date);
+                const formattedKileage = entry.kileage.toLocaleString();
+
                 return (
                     <div
                         key={entry.id}
                         className="relative flex gap-4 md:gap-10"
                     >
-                        {/* --- LEFT: Date & Km --- */}
-                        <div className="w-20 md:w-32 pt-1 text-right shrink-0">
+                        {/* --- LEFT: Date & Km for desktop--- */}
+                        <div className="hidden md:block w-20 md:w-32 pt-1 text-right shrink-0">
                             <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
                                 {formattedDate}
                             </div>
                             <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
-                                {entry.kileage.toLocaleString()} km
+                                {formattedKileage} km
                             </div>
                         </div>
 
-                        {/* --- MIDDLE: Timeline --- */}
+                        {/* --- MIDDLE: Timeline & Date & Km for mobile --- */}
                         <div className="relative flex flex-col items-center">
                             {/* Dot */}
                             <div className="z-10 mt-1.5">
@@ -106,8 +109,16 @@ export default function Entries({
 
                         {/* --- RIGHT: Content --- */}
                         <div className="flex-1 pb-12 md:pb-16">
+                            <div className="flex items-center gap-2 md:hidden md:w-32 pt-1 mb-2 text-right shrink-0">
+                                <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
+                                    {formattedDate}
+                                </div>
+                                <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
+                                    {formattedKileage} km
+                                </div>
+                            </div>
                             <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
-                                <div className="flex items-start gap-2 sm:gap-3 min-w-0">
+                                <div className="flex sm:flex-col items-center justify-start gap-2 sm:gap-3 min-w-0">
                                     <Badge
                                         variant="outline"
                                         className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground shrink-0"
