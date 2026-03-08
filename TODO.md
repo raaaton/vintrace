@@ -3,6 +3,7 @@
 ## Dev
 
 - ~ vehicle page
+- rule to prevent any kileage entry that is not higher than the previous chronological one
 - optimize the whole app
 - add feedback to every button
 - fix vehicle card image skeleton

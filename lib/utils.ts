@@ -19,3 +19,18 @@ export const maskVIN = (vin: string): string => {
 
     return visibleSection + maskedSection;
 };
+
+export const filterToLabel: (filter: string) => string = (filter) => {
+    switch (filter) {
+        case "maintenance":
+            return "entretien";
+        case "event":
+            return "événements";
+        case "modification":
+            return "modifications";
+        case "admin":
+            return "administratif";
+        default:
+            return filter;
+    }
+};

@@ -1,5 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { createClient } from "@/lib/supabase/server";
+import {
+    Empty,
+    EmptyContent,
+    EmptyDescription,
+    EmptyHeader,
+    EmptyMedia,
+    EmptyTitle,
+} from "@/components/ui/empty";
+import { Button } from "./ui/button";
+import { History } from "lucide-react";
+import { filterToLabel } from "@/lib/utils";
 
 export default async function Entries({
     vehicleId,
@@ -21,7 +32,7 @@ export default async function Entries({
         .from("entries")
         .select("*")
         .eq("vehicle_id", vehicleId)
-        .order("created_at", { ascending: false });
+        .order("event_date", { ascending: false });
 
     if (error) {
         console.error("Error when fetching entries:", error);
@@ -48,49 +59,25 @@ export default async function Entries({
 
     return (
         <div className="flex flex-col w-full max-w-5xl mx-auto py-6 px-4 md:px-6">
-            {entries.map((entry, index) => {
-                const config = typeConfig[entry.type] || {
-                    label: "???",
-                    dotColor: "bg-white",
-                };
+            {filteredEntries.length ? (
+                filteredEntries.map((entry, index) => {
+                    const config = typeConfig[entry.type] || {
+                        label: "???",
+                        dotColor: "bg-white",
+                    };
 
-                const formattedDate = formatDate(entry.event_date);
-                const formattedKileage = entry.kileage
-                    ? entry.kileage.toLocaleString()
-                    : "---,---";
+                    const formattedDate = formatDate(entry.event_date);
+                    const formattedKileage = entry.kileage
+                        ? entry.kileage.toLocaleString()
+                        : "-,---";
 
-                return (
-                    <div
-                        key={entry.id}
-                        className="relative flex gap-4 md:gap-10"
-                    >
-                        {/* --- LEFT: Date & Km for desktop--- */}
-                        <div className="hidden md:block w-20 md:w-32 pt-1 text-right shrink-0">
-                            <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
-                                {formattedDate}
-                            </div>
-                            <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
-                                {formattedKileage} km
-                            </div>
-                        </div>
-
-                        {/* --- MIDDLE: Timeline & Date & Km for mobile --- */}
-                        <div className="relative flex flex-col items-center">
-                            {/* Dot */}
-                            <div className="z-10 mt-1.5">
-                                <div
-                                    className={`size-3 rotate-45 ${config.dotColor}`}
-                                />
-                            </div>
-                            {/* Line */}
-                            {index !== entries.length - 1 && (
-                                <div className="w-[1px] flex-1 bg-gradient-to-b from-white/20 to-transparent my-3" />
-                            )}
-                        </div>
-
-                        {/* --- RIGHT: Content --- */}
-                        <div className="flex-1 pb-12 md:pb-16">
-                            <div className="flex items-center gap-2 md:hidden md:w-32 pt-1 mb-2 text-right shrink-0">
+                    return (
+                        <div
+                            key={entry.id}
+                            className="relative flex gap-4 md:gap-10"
+                        >
+                            {/* --- LEFT: Date & Km for desktop--- */}
+                            <div className="hidden md:block w-20 md:w-32 pt-1 text-right shrink-0">
                                 <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
                                     {formattedDate}
                                 </div>
@@ -98,43 +85,106 @@ export default async function Entries({
                                     {formattedKileage} km
                                 </div>
                             </div>
-                            <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
-                                <div className="flex flex-row items-center justify-start gap-2 sm:gap-3 min-w-0">
-                                    <Badge
-                                        variant="outline"
-                                        className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground shrink-0"
-                                    >
-                                        {config.label}
-                                    </Badge>
-                                    <h3 className="text-sm sm:text-lg text-white tracking-tight leading-none">
-                                        {entry.title}
-                                    </h3>
+
+                            {/* --- MIDDLE: Timeline & Date & Km for mobile --- */}
+                            <div className="relative flex flex-col items-center">
+                                {/* Dot */}
+                                <div className="z-10 mt-1.5">
+                                    <div
+                                        className={`size-3 rotate-45 ${config.dotColor}`}
+                                    />
                                 </div>
-                                <div className="text-sm font-mono text-white/80 whitespace-nowrap sm:ml-4">
-                                    {entry.cost
-                                        ? entry.cost > 0
-                                            ? `${entry.cost.toLocaleString("en-US")} €`
-                                            : "-- €"
-                                        : "-- €"}
-                                </div>
+                                {/* Line */}
+                                {index !== entries.length - 1 && (
+                                    <div className="w-[1px] flex-1 bg-gradient-to-b from-white/20 to-transparent my-3" />
+                                )}
                             </div>
 
-                            <div className="text-xs sm:text-sm text-muted-foreground/60 mb-4 md:mb-6">
-                                {entry.detailer}
-                            </div>
-
-                            {/* Description */}
-                            {entry.description && (
-                                <div className="relative pl-3 md:pl-4 border-l-2 border-white/5 py-1">
-                                    <p className="text-xs sm:text-sm text-muted-foreground/80 italic leading-relaxed">
-                                        {entry.description}
-                                    </p>
+                            {/* --- RIGHT: Content --- */}
+                            <div className="flex-1 pb-12 md:pb-16">
+                                <div className="flex items-center gap-2 md:hidden md:w-32 pt-1 mb-2 text-right shrink-0">
+                                    <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
+                                        {formattedDate}
+                                    </div>
+                                    <div className="text-[10px] md:text-[11px] font-mono tracking-widest text-muted-foreground mt-0.5 md:mt-1">
+                                        {formattedKileage} km
+                                    </div>
                                 </div>
-                            )}
+                                <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
+                                    <div className="flex flex-row items-center justify-start gap-2 sm:gap-3 min-w-0">
+                                        <Badge
+                                            variant="outline"
+                                            className="bg-white/5 text-[10px] border-white/10 px-1.5 py-0.5 text-muted-foreground shrink-0"
+                                        >
+                                            {config.label}
+                                        </Badge>
+                                        <h3 className="text-sm sm:text-lg text-white tracking-tight leading-none">
+                                            {entry.title}
+                                        </h3>
+                                    </div>
+                                    <div className="text-sm font-mono text-white/80 whitespace-nowrap sm:ml-4">
+                                        {entry.cost
+                                            ? entry.cost > 0
+                                                ? `${entry.cost.toLocaleString("en-US")} €`
+                                                : "--- €"
+                                            : "--- €"}
+                                    </div>
+                                </div>
+
+                                <div className="text-xs sm:text-sm text-muted-foreground/60 mb-4 md:mb-6">
+                                    {entry.detailer}
+                                </div>
+
+                                {/* Description */}
+                                {entry.description && (
+                                    <div className="relative pl-3 md:pl-4 border-l-2 border-white/5 py-1">
+                                        <p className="text-xs sm:text-sm text-muted-foreground/80 italic leading-relaxed">
+                                            {entry.description}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
+                    );
+                })
+            ) : (
+                <Empty className="py-20 border-none bg-transparent">
+                    <EmptyHeader className="flex flex-col items-center">
+                        <EmptyMedia
+                            variant="icon"
+                            className="size-16 rounded-xl bg-white/5 border border-white/10 rotate-45 flex items-center justify-center mb-6"
+                        >
+                            {/* On contre-pivote l'icône pour qu'elle reste droite dans le carré incliné */}
+                            <History className="-rotate-45 size-8 text-muted-foreground/60" />
+                        </EmptyMedia>
+
+                        <EmptyTitle className="text-xl font-medium tracking-tight text-white">
+                            Aucune entrée trouvée
+                        </EmptyTitle>
+
+                        <EmptyDescription className="text-sm text-muted-foreground mt-2">
+                            Il n'y a pas encore d'historique enregistré
+                            {filter === "all" ? (
+                                "."
+                            ) : (
+                                <p>
+                                    pour la catégorie{" "}
+                                    <span className="text-white">
+                                        {filterToLabel(filter)}
+                                    </span>
+                                    .
+                                </p>
+                            )}
+                        </EmptyDescription>
+                    </EmptyHeader>
+
+                    <EmptyContent className="mt-8">
+                        <Button className="bg-[#FDB022] hover:bg-[#FDB022]/90 text-black font-bold uppercase tracking-widest text-[10px] h-10 px-8 rounded-none">
+                            Ajouter une donnée
+                        </Button>
+                    </EmptyContent>
+                </Empty>
+            )}
         </div>
     );
 }
