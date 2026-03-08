@@ -1,58 +1,37 @@
 import { Badge } from "@/components/ui/badge";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Entries({
+export default async function Entries({
     vehicleId,
     filter,
 }: {
     vehicleId: string;
     filter: string;
 }) {
-    const entries = [
-        {
-            id: "e1",
-            type: "service",
-            title: "Grand Entretien & Réglage Soupapes",
-            description:
-                "Procédure complète avec dépose moteur. Remplacement bougies, filtres (huile, essence, air). Vidange Motul 300V 15W50. Test de compression effectué : OK (145-150 psi).",
-            detailer: "Flat Six Spécialistes",
-            kileage: 84100,
-            cost: 3200.0,
-            event_date: "2024-11-15",
-        },
-        {
-            id: "e2",
-            type: "modification",
-            title: "Optimisation Échappement Inox",
-            description:
-                "Installation d'une ligne complète en acier inoxydable 304L. Gain de poids substantiel (-12kg) et amélioration du flux thermique.",
-            detailer: "Motorsport Performance",
-            kileage: 84500,
-            cost: 2450.0,
-            event_date: "2024-12-02",
-        },
-        {
-            id: "e3",
-            type: "event",
-            title: "Concours d'Élégance de Monterey",
-            description:
-                "Participation au Concours de Carmel-by-the-Sea. Récompensé 2ème de la catégorie (964/993 Turbo). État cosmétique exceptionnel noté par le jury.",
-            detailer: "Monterey Car Week",
-            kileage: 84800,
-            cost: 450.0,
-            event_date: "2025-01-20",
-        },
-        {
-            id: "e4",
-            type: "admin",
-            title: "Renouvellement Certificat d'Immatriculation",
-            description:
-                "Mise à jour administrative suite à l'importation. Dossier FFVE complet approuvé.",
-            detailer: "ANTS / Préfecture",
-            kileage: 84800,
-            cost: 0.0,
-            event_date: "2025-02-10",
-        },
-    ].filter((entry) => entry.type === filter || filter === "all");
+    // Entries fetching
+    const supabase = await createClient();
+
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) return null;
+
+    const { data: entries, error } = await supabase
+        .from("entries")
+        .select("*")
+        .eq("vehicle_id", vehicleId)
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("Error when fetching entries:", error);
+        return null;
+    }
+
+    // Filter entries based on selected type
+    const filteredEntries = entries.filter((entry) => {
+        return filter === "all" || entry.type === filter;
+    });
 
     // Type Configuration: Label & Dot Color based on Entry Type
     const typeConfig: Record<string, { label: string; dotColor: string }> = {
@@ -76,7 +55,9 @@ export default function Entries({
                 };
 
                 const formattedDate = formatDate(entry.event_date);
-                const formattedKileage = entry.kileage.toLocaleString();
+                const formattedKileage = entry.kileage
+                    ? entry.kileage.toLocaleString()
+                    : "---,---";
 
                 return (
                     <div
@@ -130,8 +111,10 @@ export default function Entries({
                                     </h3>
                                 </div>
                                 <div className="text-sm font-mono text-white/80 whitespace-nowrap sm:ml-4">
-                                    {entry.cost > 0
-                                        ? `${entry.cost.toLocaleString("en-US")} €`
+                                    {entry.cost
+                                        ? entry.cost > 0
+                                            ? `${entry.cost.toLocaleString("en-US")} €`
+                                            : "-- €"
                                         : "-- €"}
                                 </div>
                             </div>
