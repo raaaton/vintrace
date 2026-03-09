@@ -18,7 +18,7 @@ const lexend = Lexend({
 });
 
 const priestacy = localFont({
-    src: "../public/fonts/Priestacy.otf", 
+    src: "../public/fonts/Priestacy.otf",
     display: "swap",
     variable: "--font-hand",
 });
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
                 width: 500,
                 height: 500,
                 alt: "VinTrace Logo",
-            }
+            },
         ],
     },
     twitter: {
@@ -61,6 +61,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="fr" className="dark" suppressHydrationWarning>
+            <head>
+                <meta
+                    name="google-site-verification"
+                    content="DS2_1oAlF6dde2tbPEUTh8IUmPV2nypSt_LkidWi6qM"
+                />
+            </head>
             <body
                 className={`${lexend.variable} ${priestacy.variable} ${lexend.className} antialiased`}
             >
