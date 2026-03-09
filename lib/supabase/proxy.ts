@@ -48,7 +48,8 @@ export async function updateSession(request: NextRequest) {
     }
 
     // Private routes protections
-    const isPublicRoute = pathname === "/" || isAuthRoute;
+    const isPublicRoute =
+        pathname === "/" || pathname === "/robots.txt" || isAuthRoute;
 
     if (!user && !isPublicRoute) {
         const url = request.nextUrl.clone();
