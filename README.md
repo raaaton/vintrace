@@ -48,9 +48,10 @@ pnpm install
 Créer un fichier `.env.local` basé sur `.env.example` :
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
-SUPABASE_SERVICE_ROLE_KEY=your_role_key
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+
+# Optional API keys for additional features that have not yet been implemented in this project
 POLAR_API_KEY=your_polar_key
 RESEND_API_KEY=your_resend_key
 
