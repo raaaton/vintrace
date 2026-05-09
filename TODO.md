@@ -1,30 +1,35 @@
 # Todo
 
-## Dev
+## MVP
 
-- ~ vehicle page
-- rule to prevent any kileage entry that is not higher than the previous chronological one
-- optimize the whole app
-- add feedback to every button
-- fix vehicle card image skeleton
-- handle add vehicle form data integrity error
-- account page
-- onboarding
-- monetization (polar.sh)
-- pwa
-- optimize vehicle creation...
-  -> Decouple Modal: Create VehicleModalContainer (Client) to hold Dialog/Drawer logic, keeping the trigger button Server-side.
+- ~ Vehicle page
+   -> Add entry feature
+- Showroom
+
+## Better
+
+- 404 page
+- Rule to prevent any kileage entry that is not higher than the previous chronological one
+- Optimize the whole app
+- Add feedback to every button
+- Fix vehicle card image skeleton
+- Handle add vehicle form data integrity error
+- Account page
+- Onboarding
+- Monetization (polar.sh)
+- PWA
+- Optimize vehicle creation...
+  -> Decouple Modal: Create VehicleModalContainer (Client) to hold Dialog/Drawer logic, Keeping the trigger button Server-side.
   -> Extract VehicleForm (Client) from AddVehicleButton (Server)
   -> Migrate DB logic to Server Actions (/actions/vehicle-actions.ts)
   -> Replace router.refresh() with revalidatePath('/garage')
   -> Force .webp (0.8 quality) on image crop to reduce upload payload
   -> Implement useTransition for optimistic UI feedback
-- mobile native (capacitor)...
+- Mobile native (capacitor)...
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
   -> App Store (100€/y) (+ apple login)
 - /auth/auth-code-error page
-- 404 page
 - auto-fill car info for
   -> add vehicle form with vin / license plate
   -> add event with picture
