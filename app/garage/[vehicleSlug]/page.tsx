@@ -10,7 +10,9 @@ import {
 } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Entries from "@/components/Entries";
+import AddEntryButton from "@/components/AddEntryButton";
 import { Metadata } from "next";
+import { getEntriesNumber } from "@/lib/utils";
 
 type GenerateMetadataProps = {
     params: Promise<{ vehicleSlug: string }>;
@@ -165,30 +167,32 @@ export default async function VehiclePage({
                         <div className="flex items-center gap-4">
                             <div className="flex flex-col items-end leading-none">
                                 <span className="hidden md:inline text-xs uppercase font-light tracking-wider text-muted-foreground">
-                                    5 Entrées
+                                    {await getEntriesNumber(data.id)}
                                 </span>
                             </div>
 
                             {/* Responsive 'Add' Buttons: Inline on Desktop, FAB on Mobile */}
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <button className="hidden md:flex items-center gap-2 px-3 py-2 lg:px-4 lg:py-3 text-primary-foreground bg-primary hover:bg-primary/90 uppercase text-xs font-semibold transition-colors ease-out">
-                                        <Plus size={16} strokeWidth={2.5} />
-                                        <span className="hidden md:inline">
-                                            Ajouter
-                                        </span>
+                                    <AddEntryButton />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>En construction 🚧</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <button
+                                        className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
+                                        aria-label="Ajouter une entrée"
+                                    >
+                                        <Plus size={24} strokeWidth={2.5} />
                                     </button>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>En construction 🚧</p>
                                 </TooltipContent>
                             </Tooltip>
-                            <button
-                                className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
-                                aria-label="Ajouter une entrée"
-                            >
-                                <Plus size={24} strokeWidth={2.5} />
-                            </button>
                         </div>
                     </div>
 

@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
+import { notFound } from "next/dist/client/components/navigation";
 import { twMerge } from "tailwind-merge";
+import { createClient } from "./supabase/client";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -34,3 +36,24 @@ export const filterToLabel: (filter: string) => string = (filter) => {
             return filter;
     }
 };
+
+export const getEntriesNumber = async (vehicleId: string): Promise<string> => {
+    console.log("Fetching entries count for vehicle ID:", vehicleId);
+    
+    const supabase = await createClient();
+
+        const { count, error } = await supabase
+            .from("entries")
+            .select("*", { count: "exact", head: true })
+            .eq("vehicle_id", vehicleId);
+    
+        if (error) {
+            console.error("Database error:", error.code, error.message, error);
+            if (error.code !== "PGRST116") {
+                console.error("Database error:", error);
+            }
+            notFound();
+        }
+    
+    return count ? (String(count) + " Entrées") : "Aucune entrée";
+}
