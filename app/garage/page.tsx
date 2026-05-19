@@ -66,7 +66,7 @@ export default async function GaragePage() {
                 </section>
             ) : (
                 <section className="flex justify-center">
-                    <Link href={`/garage/${vehicles[0].slug}`}>
+                    <Link href={`/garage/${vehicles[0].slug}`} scroll={true}>
                         <VehicleHero vehicle={vehicles[0]} />
                     </Link>
                 </section>

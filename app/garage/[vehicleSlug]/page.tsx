@@ -13,6 +13,7 @@ import Entries from "@/components/Entries";
 import AddEntryButton from "@/components/AddEntryButton";
 import { Metadata } from "next";
 import { getEntriesNumber } from "@/lib/utils";
+import ScrollToTop from "@/components/ScrollToTop";
 
 type GenerateMetadataProps = {
     params: Promise<{ vehicleSlug: string }>;
@@ -59,6 +60,7 @@ export default async function VehiclePage({
 
     return (
         <>
+            <ScrollToTop />
             {/* Top Navigation Bar */}
             <nav className="fixed z-[100] p-6 md:p-6 lg:p-12 w-full flex justify-between items-center">
                 <Link
