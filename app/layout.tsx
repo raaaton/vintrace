@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import Image from "next/image";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const lexend = Lexend({
     subsets: ["latin"],
@@ -121,6 +122,7 @@ export default function RootLayout({
                             </footer>
                         </div>
                         <SpeedInsights />
+                        <Analytics />
                     </TooltipProvider>
                 </ThemeProvider>
             </body>
