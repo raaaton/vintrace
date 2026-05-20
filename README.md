@@ -18,14 +18,24 @@
 - **Paiements** : [Polar.sh](https://polar.sh/)
 - **Emails** : [Resend](https://resend.com/).
 
-## 🏗️ Architecture des Données (PostgreSQL)
+## 🏗️ Architecture des Données (PostgreSQL via Supabase)
+
+### 🗄️ Tables
 
 L'architecture est optimisée pour le Serverless et la sécurité (RLS Supabase) :
-
 - `profiles` : Données utilisateurs.
 - `vehicles` : Le cœur du système (lié au `owner_id`).
-- `maintenance_events` & `event_files` : La preuve de la valeur du véhicule.
-- `ownership_transfers` : Système de passation du dossier lors de la vente.
+- `entries` : La preuve de la valeur du véhicule (maintenance, modifications, administratif).
+
+### 📦 Stockage Supabase (S3)
+
+Le bucket `vehicle-media` centralise tous les fichiers liés aux véhicules, organisés par véhicule :
+
+```md
+vehicle-media/
+  └── [vehicleId]/
+    └── cover-image/  → Photo principale du véhicule
+```
 
 ## 🚀 Installation & Développement
 
@@ -73,7 +83,6 @@ pnpm dev
   - [x] Ajout de véhicule : Formulaire de création (Marque, Modèle, Année, VIN) avec validation stricte.
 - [ ] Timeline d'événements avec Upload Storage.
 - [ ] Génération de l'URL Showroom publique.
-- [ ] Intégration Polar.sh pour le plan "Collectionneur".
 
 ---
 
