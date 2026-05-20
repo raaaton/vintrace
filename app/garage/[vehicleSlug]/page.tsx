@@ -13,7 +13,6 @@ import Entries from "@/components/Entries";
 import AddEntryButton from "@/components/AddEntryButton";
 import { Metadata } from "next";
 import { getEntriesNumber } from "@/lib/utils";
-import ScrollToTop from "@/components/ScrollToTop";
 
 type GenerateMetadataProps = {
     params: Promise<{ vehicleSlug: string }>;
