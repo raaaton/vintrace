@@ -10,8 +10,7 @@
 
 - 404 page
 - Rule to prevent any kileage entry that is not higher than the previous chronological one
-- Optimize the whole app
-- Add feedback to every button
+- Add smooth animations everywhere
 - Fix vehicle card image skeleton
 - Handle add vehicle form data integrity error
 - Account page
