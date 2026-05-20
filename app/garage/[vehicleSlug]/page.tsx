@@ -60,7 +60,6 @@ export default async function VehiclePage({
 
     return (
         <>
-            <ScrollToTop />
             {/* Top Navigation Bar */}
             <nav className="fixed z-[100] p-6 md:p-6 lg:p-12 w-full flex justify-between items-center">
                 <Link
