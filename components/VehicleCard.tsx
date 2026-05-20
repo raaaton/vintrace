@@ -17,7 +17,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             {/* Image */}
             <div className="aspect-[16/10] overflow-hidden flex justify-center items-center">
                 <Image
-                    className="aspect-[16/10] object-cover hover:scale-[1.05] transition-all duration-1500 ease-out filter saturate-[0.85] group-hover:saturate-100"
+                    className="aspect-[16/10] object-cover group-hover:scale-[1.05] transition-all duration-1500 ease-out filter saturate-[0.85] group-hover:saturate-100"
                     src={
                         vehicle.cover_image_url
                             ? vehicle.cover_image_url
