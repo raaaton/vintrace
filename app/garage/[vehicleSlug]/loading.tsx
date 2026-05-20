@@ -2,8 +2,81 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, ArrowUpRight, Settings, Plus } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { Loader2 } from "lucide-react";
-import ScrollToTop from "@/components/ScrollToTop";
+
+function EntrySkeleton({ isLast }: { isLast: boolean }) {
+    return (
+        <div className="relative flex gap-4 md:gap-10">
+            {/* LEFT: Date & Km — desktop only */}
+            <div className="hidden md:block w-20 md:w-32 pt-1 text-right shrink-0">
+                <Skeleton className="text-xs md:text-sm font-mono text-transparent w-fit ml-auto">
+                    00-00-0000
+                </Skeleton>
+                <Skeleton className="text-[10px] md:text-[11px] font-mono text-transparent mt-0.5 md:mt-1 w-fit ml-auto">
+                    0,000 km
+                </Skeleton>
+            </div>
+
+            {/* MIDDLE: Timeline */}
+            <div className="relative flex flex-col items-center">
+                {/* Dot */}
+                <div className="z-10 mt-1.5">
+                    <div className="size-3 rotate-45 bg-white/20" />
+                </div>
+                {/* Line */}
+                {!isLast && (
+                    <div className="w-[1px] flex-1 bg-gradient-to-b from-white/20 to-transparent my-3" />
+                )}
+            </div>
+
+            {/* RIGHT: Content */}
+            <div className="flex-1 pb-12 md:pb-16">
+                {/* Mobile date + km */}
+                <div className="flex items-center gap-2 md:hidden mb-2">
+                    <Skeleton className="text-xs font-mono text-transparent w-fit">
+                        00-00-0000
+                    </Skeleton>
+                    <Skeleton className="text-[10px] font-mono text-transparent w-fit">
+                        0,000 km
+                    </Skeleton>
+                </div>
+
+                {/* Badge + Title + Cost */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
+                    <div className="flex flex-row items-center gap-2 sm:gap-3 min-w-0">
+                        {/* Badge */}
+                        <Skeleton className="text-[10px] text-transparent px-1.5 py-0.5 shrink-0 w-fit">
+                            SRV
+                        </Skeleton>
+                        {/* Title */}
+                        <Skeleton className="text-sm sm:text-lg text-transparent w-fit leading-none">
+                            Titre de l'entrée skeleton
+                        </Skeleton>
+                    </div>
+                    {/* Cost */}
+                    <Skeleton className="text-sm font-mono text-transparent whitespace-nowrap w-fit sm:ml-4">
+                        0,000 €
+                    </Skeleton>
+                </div>
+
+                {/* Detailer */}
+                <Skeleton className="text-xs sm:text-sm text-transparent mb-4 md:mb-6 w-fit">
+                    Prestataire skeleton
+                </Skeleton>
+
+                {/* Description */}
+                <div className="pl-3 md:pl-4 border-l-2 border-white/5 py-1 flex flex-col gap-1.5">
+                    <Skeleton className="text-xs sm:text-sm text-transparent w-fit">
+                        Description longue de l'entrée en skeleton placeholder
+                        text lorem
+                    </Skeleton>
+                    <Skeleton className="text-xs sm:text-sm text-transparent w-fit">
+                        Deuxième ligne de description skeleton plus courte
+                    </Skeleton>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 function AddEntryButtonSkeleton() {
     return (
@@ -17,8 +90,7 @@ function AddEntryButtonSkeleton() {
 export default function Loading() {
     return (
         <>
-            <ScrollToTop />
-            {/* Top Navigation Bar */}
+            {/* Top Navigation Bar — statique */}
             <nav className="fixed z-[100] p-6 md:p-6 lg:p-12 w-full flex justify-between items-center">
                 <div className="flex items-center gap-2 p-2 md:px-3 md:py-2 lg:px-4 lg:py-3 backdrop-blur-md bg-secondary/35 uppercase text-xs font-semibold border border-foreground/25">
                     <ArrowLeft size={16} />
@@ -117,17 +189,16 @@ export default function Loading() {
                             <Skeleton className="hidden md:inline text-xs text-transparent w-fit">
                                 0 entrées
                             </Skeleton>
+                            {/* Bouton jaune identique au vrai */}
                             <AddEntryButtonSkeleton />
                         </div>
                     </div>
 
                     <TabsContent value="all">
-                        <div className="flex justify-center items-start py-[13.25rem]">
-                            <Loader2
-                                className="animate-spin text-muted-foreground"
-                                size={32}
-                                strokeWidth={1.5}
-                            />
+                        <div className="flex flex-col w-full max-w-5xl mx-auto py-6 px-4 md:px-6">
+                            {[...Array(2)].map((_, i) => (
+                                <EntrySkeleton key={i} isLast={i === 1} />
+                            ))}
                         </div>
                     </TabsContent>
                 </Tabs>
