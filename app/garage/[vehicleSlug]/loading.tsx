@@ -2,6 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, ArrowUpRight, Settings, Plus } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function EntrySkeleton({ isLast }: { isLast: boolean }) {
     return (
@@ -90,6 +91,7 @@ function AddEntryButtonSkeleton() {
 export default function Loading() {
     return (
         <>
+            <ScrollToTop />
             {/* Top Navigation Bar — statique */}
             <nav className="fixed z-[100] p-6 md:p-6 lg:p-12 w-full flex justify-between items-center">
                 <div className="flex items-center gap-2 p-2 md:px-3 md:py-2 lg:px-4 lg:py-3 backdrop-blur-md bg-secondary/35 uppercase text-xs font-semibold border border-foreground/25">
