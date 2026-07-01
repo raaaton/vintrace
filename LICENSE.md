@@ -24,6 +24,4 @@ This software is licensed under the Creative Commons Attribution-NonCommercial-S
 
 VinTrace is Open Source to provide transparency and trust to vehicle owners regarding their digital twins. However, the commercial exploitation rights are strictly reserved for the original author.
 
-For commercial inquiries or partnership requests, please contact: [Your Email]
-
 The [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International legal code](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) provides the full text of this license.
