@@ -56,4 +56,39 @@ export const getEntriesNumber = async (vehicleId: string): Promise<string> => {
         }
     
     return count ? (String(count) + " Entrées") : "Aucune entrée";
-}
+};
+
+export const getVehicleIdBySlug = async (slug: string): Promise<string> => {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("vehicles")
+        .select("id")
+        .eq("slug", slug)
+        .single();
+
+    if (error) {
+        console.error("Database error:", error.code, error.message, error);
+        notFound();
+    }
+
+    return data?.id || "";
+};
+
+export const getPreviousKileage = async (vehicleId: string): Promise<number | string> => {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("vehicles")
+        .select("kileage")
+        .eq("id", vehicleId)
+        .order("created_at", { ascending: false })
+        .single();
+
+    if (error) {
+        console.error("Database error:", error.code, error.message, error);
+        notFound();
+    }
+
+    return data?.kileage || "";
+};
