@@ -3,35 +3,27 @@
 ## MVP
 
 - ~ Vehicle page
-   -> Add entry feature
+   -> Add attachment (picture/pdf)
 - Showroom
 
 ## Better
 
-- 404 page
-- Rule to prevent any kileage entry that is not higher than the previous chronological one
+- Entry add rule to prevent any kileage that is not higher than the previous chronological one
+- Entry add rule to prevent any date after today
 - Add smooth animations everywhere
 - Fix vehicle card image skeleton
 - Handle add vehicle form data integrity error
 - Account page
 - Onboarding
 - Monetization (polar.sh)
-- PWA
-- Optimize vehicle creation...
-  -> Decouple Modal: Create VehicleModalContainer (Client) to hold Dialog/Drawer logic, Keeping the trigger button Server-side.
-  -> Extract VehicleForm (Client) from AddVehicleButton (Server)
-  -> Migrate DB logic to Server Actions (/actions/vehicle-actions.ts)
-  -> Replace router.refresh() with revalidatePath('/garage')
-  -> Force .webp (0.8 quality) on image crop to reduce upload payload
-  -> Implement useTransition for optimistic UI feedback
 - Mobile native (capacitor)...
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
   -> App Store (100€/y) (+ apple login)
 - /auth/auth-code-error page
-- auto-fill car info for
+- (AI ?) auto-fill car info for
   -> add vehicle form with vin / license plate
-  -> add event with picture
+  -> add event with picture/pdf
 
 ### Email example
 
