@@ -15,14 +15,18 @@ import {
     FileUploadTrigger,
 } from "@/components/ui/file-upload";
 
-export default function CoverImageUploader({
+export default function DocumentUploader({
     isDesktop,
     files,
     setFilesAction,
+    accepts,
+    fileLimit,
 }: {
     isDesktop: boolean;
     files: File[];
     setFilesAction: (files: File[]) => void;
+    accepts: string;
+    fileLimit: number;
 }) {
     const onFileReject = React.useCallback((file: File) => {
         toast.error("Upload failed", {
@@ -34,26 +38,33 @@ export default function CoverImageUploader({
     if (isDesktop) {
         return (
             <FileUpload
-                maxFiles={1}
-                maxSize={5 * 1024 * 1024}
-                accept=".jpeg, .jpg, .png, .webp"
+                maxFiles={fileLimit}
+                maxSize={50 * 1024 * 1024}
+                accept={accepts}
                 className="w-full"
                 value={files}
                 onValueChange={setFilesAction}
                 onFileReject={onFileReject}
             >
-                {!files.length && (
+                {files.length < fileLimit && (
                     <FileUploadDropzone className="hover:cursor-pointer">
                         <div className="flex flex-col items-center gap-1 text-center">
                             <div className="flex items-center justify-center rounded-full border p-2.5">
                                 <Upload className="size-6 text-muted-foreground" />
                             </div>
                             <p className="font-medium text-sm">
-                                Glissez et déposez une image ici
+                                Glissez et déposez un
+                                {accepts.includes(".pdf")
+                                    ? " document"
+                                    : "e image"}{" "}
+                                ici
                             </p>
+                            <p className="text-xs">Ou cliquez pour parcourir</p>
                             <p className="text-muted-foreground text-xs">
-                                Ou cliquez pour parcourir (1 image obligatoire,
-                                jusqu'à 50 Mo)
+                                Formats acceptés :{" "}
+                                {accepts
+                                    .replaceAll(".", "")
+                                    .replaceAll(", ", ", ")}
                             </p>
                         </div>
                         <FileUploadTrigger asChild>
@@ -69,7 +80,11 @@ export default function CoverImageUploader({
                 )}
                 <FileUploadList>
                     {files.map((file, index) => (
-                        <FileUploadItem key={index} value={file}>
+                        <FileUploadItem
+                            key={index}
+                            value={file}
+                            className="max-w-[40ch]"
+                        >
                             <FileUploadItemPreview />
                             <FileUploadItemMetadata />
                             <FileUploadItemDelete asChild>
@@ -93,7 +108,7 @@ export default function CoverImageUploader({
         <FileUpload
             maxFiles={1}
             maxSize={50 * 1024 * 1024}
-            accept=".jpeg, .jpg, .png, .webp"
+            accept={accepts}
             className="w-full"
             value={files}
             onValueChange={setFilesAction}

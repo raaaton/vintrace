@@ -20,11 +20,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ComponentProps, useState } from "react";
-import CoverImageUploader from "./CoverImageUploader";
+import DocumentUploader from "./DocumentUploader";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
-import { getCoverImageLink } from "@/lib/supabase/storage";
+import { getDocumentLinks } from "@/lib/supabase/storage";
 import { ImageCropper } from "@/components/ImageCropper";
 
 export default function AddVehicleButton() {
@@ -121,32 +121,37 @@ function ProfileForm({
 
         setIsPending(true);
 
-        formData.append("cover_image", files[0]);
-
         try {
-            const supabase = await createClient();
+            const supabase = createClient();
 
             const {
                 data: { user },
             } = await supabase.auth.getUser();
 
+            if (!user) {
+                toast.error("Utilisateur non connecté");
+                return;
+            }
+
             const vehicleId = crypto.randomUUID();
+
+            const uploadedUrls = await getDocumentLinks(
+                user,
+                files,
+                vehicleId,
+                "cover-image",
+            );
 
             const { error } = await supabase.from("vehicles").insert({
                 id: vehicleId,
-                owner_id: user?.id,
+                owner_id: user.id,
                 make: formData.get("make") as string,
                 model: formData.get("model") as string,
                 year: Number(formData.get("year")),
                 license_plate: formData.get("license_plate") as string,
                 vin: formData.get("vin") as string,
                 kileage: Number(formData.get("kileage")),
-                cover_image_url: await getCoverImageLink(
-                    user!,
-                    formData.get("cover_image") as File,
-                    vehicleId as string,
-                    "cover-image",
-                ),
+                cover_image_url: uploadedUrls[0],
             });
 
             if (error) throw error;
@@ -275,10 +280,12 @@ function ProfileForm({
             {/* Cover Image */}
             <div className="flex flex-col gap-3 justify-center">
                 <Label>Photo principale du véhicule</Label>
-                <CoverImageUploader
+                <DocumentUploader
                     isDesktop={isDesktop}
                     files={files}
                     setFilesAction={handleFileSelect}
+                    accepts=".jpeg, .jpg, .png, .webp"
+                    fileLimit={1}
                 />
             </div>
             <Button type="submit" className="mb-2" disabled={isPending}>

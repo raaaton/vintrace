@@ -28,14 +28,14 @@ import { Plus } from "lucide-react";
 import { EntryType } from "@/lib/types";
 import EntryTypeSelector from "./EntryTypeSelector";
 import DateInput from "@/components/DateInput";
+import DocumentUploader from "@/components/DocumentUploader";
+import { getDocumentLinks } from "@/lib/supabase/storage";
 
 export default function AddEntryButton({ vehicleId }: { vehicleId: string }) {
     const [open, setOpen] = useState(false);
     const isDesktop = useMediaQuery(
         "(min-width: 768px) and (min-height: 850px)",
     );
-
-    // TODO: This button doesnt exist on mobile
 
     // Desktop: Dialog modal
     if (isDesktop) {
@@ -97,8 +97,17 @@ function ProfileForm({
     const router = useRouter();
 
     const [isPending, setIsPending] = useState(false);
-
     const [initialKileage, setInitialKileage] = useState("");
+    const [files, setFiles] = useState<File[]>([]);
+
+    const handleFileSelect = (newFiles: File[]) => {
+        if (newFiles.length > 3) {
+            toast.error("Maximum 3 fichiers");
+            setFiles(newFiles.slice(0, 3));
+            return;
+        }
+        setFiles(newFiles);
+    };
 
     useEffect(() => {
         getPreviousKileage(vehicleId).then((val) => {
@@ -113,7 +122,7 @@ function ProfileForm({
         setIsPending(true);
 
         try {
-            const supabase = await createClient();
+            const supabase = createClient();
 
             const {
                 data: { user },
@@ -131,6 +140,13 @@ function ProfileForm({
             };
             console.log("Payload envoyé à Supabase :", payload);
 
+            const uploadedUrls = await getDocumentLinks(
+                user!,
+                files,
+                vehicleId,
+                "event-documents",
+            );
+
             const { error } = await supabase.from("entries").insert({
                 id: entryId,
                 vehicle_id: vehicleId,
@@ -142,6 +158,7 @@ function ProfileForm({
                 event_date: formData.get("event_date") as string,
                 detailer: formData.get("detailer") as string,
                 type: formData.get("type") as EntryType,
+                documents: uploadedUrls,
             });
 
             if (error) throw error;
@@ -242,6 +259,18 @@ function ProfileForm({
                     placeholder="CT refusé pour déséquilibre freinage essieu arrière"
                     required
                     className="resize-none min-h-[75px] !bg-transparent"
+                />
+            </div>
+
+            {/* File.s uploading */}
+            <div className="flex flex-col gap-3 justify-center">
+                <Label>Document(s)</Label>
+                <DocumentUploader
+                    isDesktop={isDesktop}
+                    files={files}
+                    setFilesAction={handleFileSelect}
+                    accepts=".jpeg, .jpg, .png, .webp, .pdf"
+                    fileLimit={3}
                 />
             </div>
 

@@ -1,25 +1,30 @@
 import { createClient } from "@/lib/supabase/client";
 import { User } from "@supabase/supabase-js";
 
-export async function getCoverImageLink(
+export async function getDocumentLinks(
     user: User,
-    file: File,
+    files: File[],
     vehicleId: string,
-    use: "cover-image" | "event-image",
-) {
+    use: "cover-image" | "event-documents",
+): Promise<string[]> {
     const supabase = createClient();
+    const signedUrls: string[] = [];
 
-    const fileExtension = file.name.split(".").pop();
-    const filePath = `${user.id}/${vehicleId}/${use}/${use}.${fileExtension}`;
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileExtension = file.name.split(".").pop();
+        
+        const filePath = `${user.id}/${vehicleId}/${use}/${use}-${i}.${fileExtension}`;
 
-    const { data, error: UploadError } = await supabase.storage
-        .from("vehicle-media")
-        .upload(filePath, file);
+        const { data, error: UploadError } = await supabase.storage
+            .from("vehicle-media")
+            .upload(filePath, file);
 
-    if (UploadError) {
-        console.error("Error uploading image: ", UploadError);
-        throw UploadError;
-    } else {
+        if (UploadError) {
+            console.error("Error uploading image: ", UploadError);
+            throw UploadError;
+        }
+
         const fifteenYearsInSeconds = 15 * 365 * 24 * 60 * 60;
 
         const { data: signedData, error: signedError } = await supabase.storage
@@ -31,6 +36,8 @@ export async function getCoverImageLink(
             throw signedError;
         }
 
-        return signedData.signedUrl;
+        signedUrls.push(signedData.signedUrl);
     }
+
+    return signedUrls;
 }
