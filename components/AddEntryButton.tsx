@@ -127,7 +127,7 @@ function ProfileForm({
                 owner_id: user?.id,
                 title: formData.get("title"),
                 kileage: Number(formData.get("kileage")),
-                event_date: formData.get("event_date"), // 🚩 C'est probablement là que ça bloque
+                event_date: formData.get("event_date"),
             };
             console.log("Payload envoyé à Supabase :", payload);
 

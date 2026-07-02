@@ -48,7 +48,7 @@ export default async function GaragePage() {
             </header>
 
             {!vehicles || vehicles.length === 0 ? (
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-center">
                     Aucun véhicule trouvé. Ajoutez-en un pour commencer à suivre
                     son historique.
                 </p>

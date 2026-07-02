@@ -2,6 +2,7 @@
 
 import { deleteVehicle } from "@/app/actions/vehicle-actions";
 import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
 export default function DeleteVehicleButton({
     vehicleId,
@@ -13,6 +14,7 @@ export default function DeleteVehicleButton({
         e.stopPropagation();
 
         deleteVehicle(vehicleId);
+        toast.success("Véhicule supprimé avec succès !");
     };
 
     return (

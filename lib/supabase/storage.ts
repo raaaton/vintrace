@@ -10,7 +10,7 @@ export async function getCoverImageLink(
     const supabase = createClient();
 
     const fileExtension = file.name.split(".").pop();
-    const filePath = `${user.id}/${use}/${vehicleId}.${fileExtension}`;
+    const filePath = `${user.id}/${vehicleId}/${use}/${use}.${fileExtension}`;
 
     const { data, error: UploadError } = await supabase.storage
         .from("vehicle-media")
