@@ -3,7 +3,7 @@
 ## MVP
 
 - ~ Vehicle page
-   -> Add attachment (picture/pdf)
+   -> See document on UI
 - Showroom
 
 ## Better
