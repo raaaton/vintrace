@@ -11,6 +11,7 @@ import {
 import { Button } from "./ui/button";
 import { History } from "lucide-react";
 import { filterToLabel } from "@/lib/utils";
+import AddEntryButton from "./AddEntryButton";
 
 export default async function Entries({
     vehicleId,
@@ -179,9 +180,7 @@ export default async function Entries({
                     </EmptyHeader>
 
                     <EmptyContent className="mt-8">
-                        <Button className="bg-[#FDB022] hover:bg-[#FDB022]/90 text-black font-bold uppercase tracking-widest text-[10px] h-10 px-8 rounded-none">
-                            Ajouter une donnée
-                        </Button>
+                        <AddEntryButton vehicleId={vehicleId} />
                     </EmptyContent>
                 </Empty>
             )}

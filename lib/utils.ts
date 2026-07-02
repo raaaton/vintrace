@@ -83,7 +83,7 @@ export const getPreviousKileage = async (vehicleId: string): Promise<number | st
         .select("kileage")
         .eq("id", vehicleId)
         .order("created_at", { ascending: false })
-        .single();
+        .maybeSingle();
 
     if (error) {
         console.error("Database error:", error.code, error.message, error);
