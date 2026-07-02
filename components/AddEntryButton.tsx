@@ -30,6 +30,7 @@ import EntryTypeSelector from "./EntryTypeSelector";
 import DateInput from "@/components/DateInput";
 import DocumentUploader from "@/components/DocumentUploader";
 import { getDocumentLinks } from "@/lib/supabase/storage";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function AddEntryButton({ vehicleId }: { vehicleId: string }) {
     const [open, setOpen] = useState(false);
@@ -47,7 +48,7 @@ export default function AddEntryButton({ vehicleId }: { vehicleId: string }) {
                         <span className="hidden md:inline">Ajouter</span>
                     </button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto clean-scrollbar">
                     <DialogHeader>
                         <DialogTitle>Ajouter une Entrée</DialogTitle>
                     </DialogHeader>
@@ -258,11 +259,11 @@ function ProfileForm({
                     defaultValue=""
                     placeholder="CT refusé pour déséquilibre freinage essieu arrière"
                     required
-                    className="resize-none min-h-[75px] !bg-transparent"
+                    className="resize-none !bg-transparent min-h-0 h-[60px]"
                 />
             </div>
 
-            {/* File.s uploading */}
+            {/* File.s uploading / Certification checkbox */}
             <div className="flex flex-col gap-3 justify-center">
                 <Label>Document(s)</Label>
                 <DocumentUploader
@@ -273,6 +274,23 @@ function ProfileForm({
                     fileLimit={3}
                 />
             </div>
+            {files.length ? (
+                <div className="flex items-start gap-3">
+                    <Checkbox
+                        id="attestation"
+                        name="attestation"
+                        required
+                        className="mt-0.5"
+                    />
+                    <Label
+                        htmlFor="attestation"
+                        className="text-sm font-normal leading-snug cursor-pointer select-none"
+                    >
+                        J'atteste sur l'honneur l'exactitude des données saisies
+                        dans le document.
+                    </Label>
+                </div>
+            ) : null}
 
             {/* Submit Button */}
             <Button type="submit" className="mb-2" disabled={isPending}>

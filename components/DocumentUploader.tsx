@@ -83,7 +83,7 @@ export default function DocumentUploader({
                         <FileUploadItem
                             key={index}
                             value={file}
-                            className="max-w-[40ch]"
+                            className="max-w-[38.5ch]"
                         >
                             <FileUploadItemPreview />
                             <FileUploadItemMetadata />

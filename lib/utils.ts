@@ -55,7 +55,7 @@ export const getEntriesNumber = async (vehicleId: string): Promise<string> => {
             notFound();
         }
     
-    return count ? (String(count) + " Entrées") : "Aucune entrée";
+    return count ? (String(count) + " Entrée" + (count > 1 ? "s" : "")) : "Aucune entrée";
 };
 
 export const getVehicleIdBySlug = async (slug: string): Promise<string> => {
