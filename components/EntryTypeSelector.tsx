@@ -29,7 +29,7 @@ export default function EntryTypeSelector({
                 <Label
                     key={type.value}
                     htmlFor={type.value}
-                    className="flex items-center justify-center rounded-md border border-input bg-background px-4 py-3 text-sm font-semibold uppercase tracking-wide cursor-pointer transition-colors hover:bg-accent/50 has-[[data-state=checked]]:border-amber-500 has-[[data-state=checked]]:text-amber-500"
+                    className="flex items-center justify-center rounded-md border border-input bg-background px-4 py-3 text-sm font-semibold uppercase tracking-wide cursor-pointer transition-colors hover:bg-accent/50 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:text-primary"
                 >
                     <span className="sr-only">
                         <RadioGroupItem value={type.value} id={type.value} />

@@ -32,7 +32,7 @@ export default function DateInput() {
                     <Button
                         variant="outline"
                         className={cn(
-                            "w-full justify-start text-left font-normal bg-transparent border-0 border-b border-input rounded-none px-0 hover:bg-transparent text-foreground focus-visible:ring-0 focus-visible:border-amber-500 transition-colors",
+                            "w-full justify-start text-left font-normal bg-transparent border-0 border-b border-input rounded-none px-0 hover:bg-transparent text-foreground focus-visible:ring-0 focus-visible:border-primary transition-colors",
                             !date && "text-muted-foreground",
                         )}
                     >
