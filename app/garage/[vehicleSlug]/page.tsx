@@ -171,18 +171,10 @@ export default async function VehiclePage({
                                 </span>
                             </div>
 
-                            {/* Responsive 'Add' Buttons: Inline on Desktop, FAB on Mobile */}
-                            <Tooltip>
+                            <AddEntryButton vehicleId={data.id} />
+                            {/* <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <AddEntryButton vehicleId={data.id} />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>En construction 🚧</p>
-                                </TooltipContent>
-                            </Tooltip>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    {/* TODO: Mobile button */}
+                                    TODO: Mobile button
                                     <button
                                         className="md:hidden fixed bottom-6 right-6 z-[110] flex items-center justify-center w-14 h-14 bg-primary text-primary-foreground shadow-2xl active:scale-95 transition-transform"
                                         aria-label="Ajouter une entrée"
@@ -193,7 +185,7 @@ export default async function VehiclePage({
                                 <TooltipContent>
                                     <p>En construction 🚧</p>
                                 </TooltipContent>
-                            </Tooltip>
+                            </Tooltip> */}
                         </div>
                     </div>
 
