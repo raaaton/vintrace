@@ -11,11 +11,8 @@
 - Entry add rule to prevent any kileage that is not higher than the previous chronological one
 - Entry add rule to prevent any date after today
 - Add smooth animations everywhere
-- Fix vehicle card image skeleton
-- Handle add vehicle form data integrity error
 - Account page
 - Onboarding
-- Monetization (polar.sh)
 - Mobile native (capacitor)...
   -> Supabase PKCE Flows
   -> Play Store (25€ one-time)
@@ -23,7 +20,6 @@
 - /auth/auth-code-error page
 - (AI ?) auto-fill car info for
   -> add vehicle form with vin / license plate
-  -> add event with picture/pdf
 
 ### Email example
 
@@ -197,6 +193,7 @@
 - google oauth application home page
 - google oauth DN
 - legal (ToS, Privacy Policy + export data + remove data) -> Google OAuth Branding
+- Monetization (polar.sh)
 
 ## IDEAS
 
