@@ -8,10 +8,10 @@ import {
     EmptyMedia,
     EmptyTitle,
 } from "@/components/ui/empty";
-import { Button } from "./ui/button";
-import { History } from "lucide-react";
+import { History, Maximize2 } from "lucide-react";
 import { filterToLabel } from "@/lib/utils";
 import AddEntryButton from "./AddEntryButton";
+import DocumentThumbnail from "./DocumentThumbnail";
 
 export default async function Entries({
     vehicleId,
@@ -103,6 +103,7 @@ export default async function Entries({
 
                             {/* --- RIGHT: Content --- */}
                             <div className="flex-1 pb-12 md:pb-16">
+                                {/* Date and Kilometer */}
                                 <div className="flex items-center gap-2 md:hidden md:w-32 pt-1 mb-2 text-right shrink-0">
                                     <div className="text-xs md:text-sm font-mono text-white/90 tracking-tight">
                                         {formattedDate}
@@ -111,6 +112,8 @@ export default async function Entries({
                                         {formattedKileage} km
                                     </div>
                                 </div>
+
+                                {/* Title and Cost */}
                                 <div className="flex flex-col sm:flex-row sm:items-start justify-between w-full mb-1 gap-2">
                                     <div className="flex flex-row items-center justify-start gap-2 sm:gap-3 min-w-0">
                                         <Badge
@@ -132,6 +135,7 @@ export default async function Entries({
                                     </div>
                                 </div>
 
+                                {/* Detailer */}
                                 <div className="text-xs sm:text-sm text-muted-foreground/60 mb-4 md:mb-6">
                                     {entry.detailer}
                                 </div>
@@ -144,6 +148,28 @@ export default async function Entries({
                                         </p>
                                     </div>
                                 )}
+
+                                {/* Documents */}
+                                {entry.documents &&
+                                    entry.documents.length > 0 && (
+                                        <div className="mt-4 flex gap-2">
+                                            {entry.documents.map(
+                                                (doc, docIndex) => (
+                                                    <div
+                                                        key={docIndex}
+                                                        className="mt-4 flex-shrink-0 w-[120px] h-[160px] relative overflow-hidden rounded-md border border-white/10
+                                                        group hover:border-white/50 transition-all duration-300 ease-in-out cursor-pointer"
+                                                    >
+                                                        <Maximize2 className="text-foreground z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+                                                        <DocumentThumbnail
+                                                            src={doc}
+                                                            alt={`Document ${docIndex + 1}`}
+                                                        />
+                                                    </div>
+                                                ),
+                                            )}
+                                        </div>
+                                    )}
                             </div>
                         </div>
                     );

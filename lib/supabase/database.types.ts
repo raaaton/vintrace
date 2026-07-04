@@ -12,6 +12,31 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.1"
   }
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          extensions?: Json
+          operationName?: string
+          query?: string
+          variables?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       entries: {
@@ -20,12 +45,13 @@ export type Database = {
           created_at: string | null
           description: string | null
           detailer: string | null
+          documents: string[] | null
           event_date: string
           id: string
           kileage: number | null
           owner_id: string
           title: string
-          type: string
+          type: Database["public"]["Enums"]["entry-type"]
           vehicle_id: string
         }
         Insert: {
@@ -33,12 +59,13 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           detailer?: string | null
+          documents?: string[] | null
           event_date: string
           id?: string
           kileage?: number | null
           owner_id: string
           title: string
-          type: string
+          type?: Database["public"]["Enums"]["entry-type"]
           vehicle_id: string
         }
         Update: {
@@ -46,12 +73,13 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           detailer?: string | null
+          documents?: string[] | null
           event_date?: string
           id?: string
           kileage?: number | null
           owner_id?: string
           title?: string
-          type?: string
+          type?: Database["public"]["Enums"]["entry-type"]
           vehicle_id?: string
         }
         Relationships: [
@@ -285,7 +313,7 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      "entry-type": "service" | "modification" | "admin" | "event"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -411,7 +439,12 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  public: {
+  graphql_public: {
     Enums: {},
+  },
+  public: {
+    Enums: {
+      "entry-type": ["service", "modification", "admin", "event"],
+    },
   },
 } as const
