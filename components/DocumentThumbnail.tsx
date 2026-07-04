@@ -219,7 +219,7 @@ export default function DocumentThumbnail({
                                 : { width: "70vw", height: "80vh" } // fallback rare : ratio pas encore connu
                             : {}),
                     }}
-                    className={`p-2 bg-black/95 border-white/10 flex items-center justify-center ${
+                    className={`p-2 bg-background border-white/10 flex items-center justify-center ${
                         isPdf ? "" : "w-fit h-fit"
                     }`}
                 >

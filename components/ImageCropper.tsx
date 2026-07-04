@@ -104,7 +104,7 @@ export function ImageCropper({
                     <DialogTitle>Ajuster la photo</DialogTitle>
                 </DialogHeader>
                 {/* Cropper Area */}
-                <div className="relative w-full h-[400px] bg-black rounded-md overflow-hidden mt-4">
+                <div className="relative w-full h-[400px] bg-background rounded-md overflow-hidden mt-4">
                     {image && (
                         <Cropper
                             key={key}
