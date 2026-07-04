@@ -2,8 +2,6 @@
 
 ## MVP
 
-- ~ Vehicle page
-   -> See document on UI
 - Showroom
 
 ## Better
