@@ -8,7 +8,7 @@ import {
     EmptyMedia,
     EmptyTitle,
 } from "@/components/ui/empty";
-import { History, Maximize2 } from "lucide-react";
+import { History } from "lucide-react";
 import { filterToLabel } from "@/lib/utils";
 import AddEntryButton from "./AddEntryButton";
 import DocumentThumbnail from "./DocumentThumbnail";
@@ -155,17 +155,11 @@ export default async function Entries({
                                         <div className="mt-4 flex gap-2">
                                             {entry.documents.map(
                                                 (doc, docIndex) => (
-                                                    <div
+                                                    <DocumentThumbnail
                                                         key={docIndex}
-                                                        className="mt-4 flex-shrink-0 w-[120px] h-[160px] relative overflow-hidden rounded-md border border-white/10
-                                                        group hover:border-white/50 transition-all duration-300 ease-in-out cursor-pointer"
-                                                    >
-                                                        <Maximize2 className="text-foreground z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
-                                                        <DocumentThumbnail
-                                                            src={doc}
-                                                            alt={`Document ${docIndex + 1}`}
-                                                        />
-                                                    </div>
+                                                        src={doc}
+                                                        alt={`Document ${docIndex + 1}`}
+                                                    />
                                                 ),
                                             )}
                                         </div>
