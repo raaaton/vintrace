@@ -1,7 +1,11 @@
 import { updateSession } from "@/lib/supabase/proxy";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function proxy(request: NextRequest) {
+    if (request.nextUrl.pathname === "/api/keep-alive") {
+        return NextResponse.next();
+    }
+
     return await updateSession(request);
 }
 

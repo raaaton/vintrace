@@ -60,6 +60,8 @@ Créer un fichier `.env.local` basé sur `.env.example` :
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+CRON_SECRET=your_random_cron_secret
 
 # Optional API keys for additional features that have not yet been implemented in this project
 POLAR_API_KEY=your_polar_key
